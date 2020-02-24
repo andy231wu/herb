@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{label.submenu.create.doctor.detail}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{label.submenu.create.doctor.detail}">Create Doctor Info Page</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-left">
+                    <div th:replace="fragments/doctorMenu :: doctorMenu"/>
+                </div>
+
+                <div class="pd-right">
+                    <div class="title">
+                        <span class="left" th:text="#{label.submenu.create.doctor.detail}">Create Doctor Info Page</span>
+                        <span class="right">
+                            <a th:href="@{javascript:void(0);}" th:text="#{label.menu.doctor}">">Doctor Home </a>
+                            <span style="color:#000000;" th:utext = "*{#strings.escapeXml(' > > ')}"/>
+	         	             <a th:href="@{javascript:void(0);}" th:text="#{label.submenu.create.doctor.detail}">">Create Doctor Info Page</a>
+
+	         	         </span>
+                    </div>
+                    <div class="tabbable">
+                        <ul class="tabs">
+                            <li><a href="#tab1"><span th:text="#{label.submenu.record.doctor.info1}"/></a></li>
+                            <li><a href="#tab2"><span th:text="#{label.submenu.record.doctor.info2}"/></a></li>
+                        </ul>
+                        <div class="tabcontent">
+                            <div id="tab1" class="tab">
+                                <div th:replace="herbalist/doctor/fragments/doctorInputForm :: doctorDetailInput"/>
+                            </div>
+
+                            <div id="tab2" class="tab">
+                                <div th:replace="herbalist/doctor/fragments/doctorInstructionInputForm :: doctorInstructionInput"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+

@@ -1,0 +1,144 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" pageEncoding="UTF-8" />
+
+    <style type="text/css">
+        body
+        {
+            font-family: "Arial Unicode MS" !important;
+            color: red;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .top{
+            vertical-align: top;
+        }
+
+        .bottom {
+            vertical-align: bottom;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .centre {
+            vertical-align: center;
+        }
+        table {
+            width: 100%;
+        }
+
+        .bottom-padding {
+            padding-bottom: 5px;
+        }
+        .even {background: #CCC}
+        .odd {background: #FFF}
+        .minHeight{
+            min-height: 400px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div th:include="fragments/pdf/letterhead::letterhead"></div>
+
+    <table>
+        <tr >
+            <td>
+                <span style="font-weight: bold">姓名</span><br />
+                <span style="font-weight: bold">Name</span>
+            </td>
+            <td>
+                <span> [[${data.getPatientName()}]]</span>
+            </td>
+            <td>
+                <span style="font-weight: bold">年龄</span><br />
+                <span style="font-weight: bold">Age</span>
+            </td>
+            <td>
+                <span> [[${data.getPatientAge()}]]</span>
+            </td>
+            <td>
+                <span style="font-weight: bold">性别</span><br />
+                <span style="font-weight: bold">Sex</span>
+            </td>
+            <td>
+                <span> [[${data.getPatientSex()}]]</span>
+            </td>
+            <td>
+                <span style="font-weight: bold">日期</span><br />
+                <span style="font-weight: bold">Date</span>
+            </td>
+            <td>
+                <span> [[${data.getPatientDate()}]]</span>
+            </td>
+            <td>
+                <span style="font-weight: bold">处方编号</span><br />
+                <span style="font-weight: bold">Pre ID:</span>
+            </td>
+            <td>
+                <span> [[${data.getPreId()}]]</span>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <div th:if="${data.isOnlyPrintChinese}">
+        <table class="minHeight">
+            <tr th:each="medicine, rowStat : *{data.getMedicines()}" th:object="${data.getMedicines()}" th:class="${rowStat.odd}? 'odd' : 'even'">
+                    <td>[[${medicine.getName1()}]]</td>
+                    <td>[[${medicine.getWeight1()}]]
+                        <span th:if="${medicine.getName1()}">克</span>
+                    </td>
+                    <td>[[${medicine.getName2()}]]</td>
+                    <td>[[${medicine.getWeight2()}]]
+                        <span th:if="${medicine.getName2()}">克</span>
+                    </td>
+                    <td>[[${medicine.getName3()}]]</td>
+                    <td>[[${medicine.getWeight3()}]]
+                        <span th:if="${medicine.getName3()}">克</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div th:unless="${data.isOnlyPrintChinese}">
+            <table class="minHeight">
+                <tr th:each="medicine, rowStat : *{data.getMedicines()}" th:object="${data.getMedicines()}" th:class="${rowStat.odd}? 'odd' : 'even'">
+                    <td>[[${medicine.getName1()}]]<br />
+                        [[${medicine.getEngName1()}]]
+                    </td>
+                    <td>[[${medicine.getWeight1()}]]
+                        <span th:if="${medicine.getName1()}">克</span>
+                    </td>
+                    <td>[[${medicine.getName2()}]]<br />
+                        [[${medicine.getEngName2()}]]
+                    </td>
+                    <td>[[${medicine.getWeight2()}]]
+                        <span th:if="${medicine.getName2()}">克</span>
+                    </td>
+                    <td>[[${medicine.getName3()}]]<br />
+                        [[${medicine.getEngName3()}]]
+                    </td>
+                    <td>[[${medicine.getWeight3()}]]
+                        <span th:if="${medicine.getName3()}">克</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </p>
+
+    <div class='footer' th:include="fragments/pdf/pdfFooter::footer"></div>
+
+
+</body>
+</html>

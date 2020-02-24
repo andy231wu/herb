@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{label.403.page.title}">Access Denied Page</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <div class="ban-wrap">
+        <div class="bg-wrap"><!-- load image from css file --></div>
+    </div>
+    <h2><span th:text="#{label.403.page.title}">Access Denied Page</span></h2>
+    <dl class="about">
+        <dt></dt>
+        <dd>
+            <div>
+                <span style="color:red;" th:text="#{403.page.cation}">Access denied</span>
+                <br />
+                <!--<span th:text="#{403.access.denied}">403 - Access is denied</span>
+                <br />-->
+                <span th:inline="text"><span th:text="#{hello}"/> '[[${#httpServletRequest.remoteUser}]]', <span th:text="#{403.message}"/></span>
+                <br />
+                <a style="color:blue;" th:href="@{/}" th:text="#{back.to.home.page}">Back to Home Page</a>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

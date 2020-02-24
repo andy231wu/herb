@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns="http://www.isdc.ro/wro">
+
+     <group name="all">
+          <css>/css/bootstrap/3.3.2/css/bootstrap.min.css</css>
+          <css>/css/main.css</css>
+          <css>/css/herb.css</css>
+          <css>/css/style.css</css>
+
+          <js>/js/jquery-1.8.2.js</js>
+          <js>/js/jquery-ui.js</js>
+          <js>/js/herb.js</js>
+          <js>/js/handlebars-1.0.rc.1.js</js>
+          <js>/js/bootstrap.js</js>
+          <js>/js/bootstrap-transition.js</js>
+          <js>/js/bootstrap-filestyle.min.js</js>
+          <js>/js/bootstrap-collapse.jss</js>
+     </group>
+
+</groups>

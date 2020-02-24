@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property resource="application.properties" />
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %5p [%c{1}:%L] - %m%n" />
+
+    <property name="DAILY_LOG_PATTERN" value="%d{HH:mm:ss:SSS} %-5p [%C] %m%n" />
+    <property name="LOG_HOME" value="./logs" />
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                ${LOG_PATTERN}
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="Roller"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/herbalist.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                ${LOG_PATTERN}
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LOG_HOME}/archived/herbalist.%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+    </appender>
+
+<!--  send email via log4j
+   <appender name="Mailer" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>cls-bx-mail</smtpHost>
+        <subject>Herbalist- Error Log [${spring.profiles.active}] </subject>
+
+        <from>errors@herbalist.com.au</from>
+        <to>andy231wu@gmail.com</to>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${LOG_PATTERN}</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+
+    </appender>-->
+
+    <root level="info">
+        <appender-ref ref="Console" />
+        <appender-ref ref="Roller" />
+    <!--    <appender-ref ref="Mailer" />-->
+    </root>
+
+</configuration>

@@ -1,0 +1,9 @@
+As result of your bulk move activities involving the properties below please review:
+Improvements, addresses, valuations, land uses, Crown Land property type, leases, restrictions and crown-land information.
+
+The following lot(s) has been moved within your Agency: $agencyName by $currentUsername
+
+#foreach( $lotMove in $lotMoves )
+Lot: $lotMove.get(0)
+	$lotMove.get(1) --> $lotMove.get(2)
+#end

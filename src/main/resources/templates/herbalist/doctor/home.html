@@ -1,0 +1,88 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{label.shop.home.title}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{doctor.home.overview}">Doctor Home Page</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-left">
+                    <div th:replace="fragments/doctorMenu :: doctorMenu"/>
+                </div>
+
+                <div class="pd-right">
+                    <div class="title">
+                        <span class="left" th:text="#{doctor.home.overview}">Doctor Home Page</span>
+                        <span class="right">
+                            <a th:href="@{javascript:void(0);}" th:text="#{label.menu.doctor}">">Doctor Home </a>
+                             <span style="color:#000000;" th:utext = "*{#strings.escapeXml(' > > ')}"/>
+	         	             <a th:href="@{javascript:void(0);}" th:text="#{doctor.home.overview}">">Doctor Home Review</a>
+
+	         	         </span>
+                    </div>
+                    <div class="section">
+                        <span style="color:#FF9900;" th:text="#{doctor.functions.message}"></span><br />
+
+                        <ul id="menuList">
+                            <li>
+                                <a th:href="@{/doctor/createDoctorDetail}" th:text="#{label.submenu.record.doctor.info1}">xxxx</a>
+                                <a th:href="@{/doctor/createDoctorDetail}" th:text="#{label.submenu.record.doctor.info2}">xxxx</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/doctor/createPatientDetail}" th:text="#{label.submenu.record.patient.info}">xxxx</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/doctor/createPatientDetail}" th:text="#{label.submenu.edit.patient.info}">xxx</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/doctor/createPrescription}" th:text="#{label.submenu.record.patient.symptom}">xxx</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/doctor/createPrescription}" th:text="#{label.submenu.write.prescription}">xxx</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/doctor/editPrintPrescription}" th:text="#{label.submenu.amend.prescription}">xxx</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/doctor/editPrintPrescription}" th:text="#{label.submenu.edit.prescription}">xxx</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/doctor/editPrintPrescription}" th:text="#{label.submenu.print.prescription}">xxx</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/doctor/searchHistoryRecord}" th:text="#{label.submenu.search.patient.record}">xxxx</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/doctor/searchHistoryRecord}" th:text="#{label.submenu.show.history.symptom}">xxx</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/doctor/searchHistoryRecord}" th:text="#{label.submenu.show.history.prescription}">xxx</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/shop/showPatientFeeCharts}" th:text="#{label.submenu.display.weekly.report}">xxx</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/showPatientFeeCharts}" th:text="#{label.submenu.display.monthly.report}">xxx</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/showPatientFeeCharts}" th:text="#{label.submenu.display.all.yearly.report}">xxx</a>
+                            </li>
+
+                            <li>
+                                <a th:href="@{/doctor/purgeOldPrescriptions}" th:text="#{label.submenu.purge.old.prescriptions}">xxx</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</html>

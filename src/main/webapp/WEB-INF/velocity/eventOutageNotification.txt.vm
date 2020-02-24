@@ -1,0 +1,13 @@
+ESTIMATED TIMEFRAME:
+$stopDate until $startDate
+
+SUMMARY OF ACTIVITY:
+The scheduled outage for #if(!$allSystems)$sourceSystem#end event processing between $stopDate and $startDate has been cancelled
+
+SIGNIFICANCE:
+GPR will not process any incoming events #if (!$allSystems)from $sourceSystem#end during this time. Processing will resume at $startDate
+
+USER REQUIRED ACTIONS:
+None
+
+If you encounter any problems after the outage, please contact the GPR Product Manager on (02) 9236 7706 or email at gpr.info@property.nsw.gov.au

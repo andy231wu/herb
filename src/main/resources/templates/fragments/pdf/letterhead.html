@@ -1,0 +1,26 @@
+<div th:fragment="letterhead">
+    <table>
+        <tr >
+            <td>
+                <span style="font-size: 40px; font-weight: bold"> [[${data.getShopChineseName()}]]</span><br />
+                <span style="font-size: 18px; font-weight: bold">[[${data.getShopEnglishName()}]]</span>
+            </td>
+            <td class="top bold right">
+                            [[${data.getShopAddress()}]]<br />
+                            [[${data.getShopSuburb()}]] [[${data.getShopState()}]] [[${data.getShopPostcode()}]]<br />
+                            [[${data.getShopPhone()}]]
+            </td>
+        </tr>
+
+        <tr >
+            <td>
+
+            </td>
+            <td class="top bold right">
+                [[${data.getShopDescription()}]]
+            </td>
+        </tr>
+
+    </table>
+    <hr />
+</div>

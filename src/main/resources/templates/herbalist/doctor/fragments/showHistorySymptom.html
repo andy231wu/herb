@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="symptom">
+   <div class="input">
+        <span th:if="${errorMessage != null}">
+           <span class="column-left"></span>
+           <span class="column-right">
+                <p><span style="color:red;" th:text="${errorMessage}">Error Message</span></p>
+           </span><br/>
+       </span>
+
+       <span class="column-left">
+            <span th:if="${currentPatient}">
+               <span th:text="${currentPatient.lastName}">Patient Last Name</span>
+               <span th:text="${currentPatient.firstName}">Patient first Name</span>
+            </span>
+       </span>
+
+        <span class="column-right">
+           <span style="float:left;">
+               <form name='searchPatientDetail' th:action="@{/doctor/searchHistoryPatient}" th:object="${searchCommand}" method="post" >
+                       <span th:text="#{label.form.patient.phone}">Phone</span>/<span th:text="#{label.form.patient.first.name}">First Name</span>
+                       <input path="patientSearchString" type='text' style="width: 200px;" th:field='*{patientSearchString}' />
+                       <input class="btn btn-success" style="width: 80px;" name="submit" type="submit" th:value="#{label.search}" />
+               </form>
+           </span>
+           <span style="float:right;">
+               <form name='selectPresID' style="display:inline-block" th:action="@{/doctor/showHistoryPrescription}" th:object="${symptomCommand}" method="post" >
+                   <select  id="dropPrescription" th:field = "*{presID}">
+                       <option th:value="0" th:text="#{label.form.doctor.select.see.doctor.date}"></option>
+                       <option th:each="prescription: ${prescriptions}" th:value="${prescription.psID}" th:text="${#temporals.format(prescription.updateDate, 'yyyy-MM-dd HH:mm')}"></option>
+                   </select>&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input class="btn btn-success" style="width: 80px;" name="submit" type="submit" th:value="#{label.search}" />
+               </form>
+           </span>
+         </span>
+
+       <br/><br/>
+       <div class="line"></div>
+       <br/>
+    <form name='editPrescriptionSymptom' th:action="@{/doctor/editSymptom}" th:object="${symptomCommand}" method='POST' onsubmit="return validate();">
+        <span class="column-left"></span>
+        <span class="column-right">
+             <p><span style="color:#FF9900;" th:text="#{label.patient.symptom.caption}">Patient Symptom</span></p>
+		</span><br/><br/>
+
+        <span class="column-left"></span>
+        <span class="column-right">
+              <textarea path="symptom" type='textarea' th:field='*{symptom}' rows="7" cols="60"/>
+		</span>  <br/> <br/>
+
+    </form>
+
+</div>
+</div>
+</body>
+</html>

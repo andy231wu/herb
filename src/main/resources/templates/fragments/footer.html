@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+</head>
+<body>
+<div th:fragment="footer">
+    <div class="page-footer">
+       <div class="footerWrap">
+        <div class="copyright">
+            <footer>
+                <!-- this is footer -->
+                Copyright &copy; 2018
+                <span th:text="#{new1step.copyright}"></span>
+                <!--<span>| Current Locale:</span>
+                <span th:text="${#locale}"></span>-->
+                <span sec:authorize="isAuthenticated()">
+                    | Logged user: <span sec:authentication="name"></span> |
+                    Roles: <span sec:authentication="principal.authorities"></span> |
+                    <a th:href="@{/logout}"><span style="color: #FF0000">Sign Out</span></a>
+                </span>
+            </footer>
+        </div>
+    </div>
+    </div>
+
+</div>
+</body>
+</html>

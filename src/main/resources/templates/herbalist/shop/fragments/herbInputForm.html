@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="herbInput">
+   <div class="input">
+       <form name='createHerb' th:action="@{/shop/createHerb}" th:object="${herbCommand}" method='POST' onsubmit="return validate();">
+           <span class="column-left2"></span>
+           <span class="column-right">
+                 <p><span style="color:#FF9900;" th:text="#{label.new.herb.caption}">New Herb Group Detail</span></p>
+			</span><br/><br/>
+
+           <span class="column-left2" th:text="#{label.form.herb.chinese.name}">Chinese Herb Name</span>
+           <span class="column-right">
+               <input path="chineseName" type='text' th:field='*{chineseName}' class="normal"/><span class="star">*</span>
+               <span class="fieldError"><errors path="chineseName" class="error"/></span>
+           </span>  <br/> <br/>
+
+           <span class="column-left2" th:text="#{label.form.herb.english.name}">Englist Herb Name</span>
+           <span class="column-right">
+               <input path="englisthName" type='text' th:field='*{englishName}' class="normal"/><span class="star">*</span>
+               <span class="fieldError"><errors path="englishName" class="error"/></span>
+           </span>  <br/> <br/>
+
+           <span class="column-left2" th:text="#{label.form.herb.unit.price}">Unit Price</span>
+           <span class="column-right">
+               <input path="unitPrice" type='text' th:field='*{unitPrice}' class="normal"/><span class="star">*</span>
+               <span class="fieldError"><errors path="unitPirce" class="error"/></span>
+           </span>  <br/> <br/>
+
+           <span class="column-left2" th:text="#{label.form.herb.quantity}">Quantity</span>
+           <span class="column-right">
+               <input path="quantity" type='text' th:field='*{quantity}' class="normal"/><span class="star">*</span>
+               <span class="fieldError"><errors path="quantitly" class="error"/></span>
+           </span>  <br/> <br/>
+
+           <span class="column-left2" th:text="#{label.form.herb.cost}">Cost</span>
+           <span class="column-right">
+               <input path="cost" type='text' th:field='*{cost}' class="normal"/><span class="star">*</span>
+               <span class="fieldError"><errors path="cost" class="error"/></span>
+           </span>  <br/> <br/>
+
+           <span class="column-left2" th:text="#{label.form.herb.group.name}">Group Name</span>
+           <span class="column-right">
+                <select  th:field="*{herbClass.name}"  id="dropOperator">
+                    <option th:each="herbClass1 : ${clinic.herbClasses}" th:value="${herbClass1.name}" th:text="${herbClass1.name}"></option>
+                </select>
+            </span>  <br/> <br/>
+
+           <br/><br/><br/><br/> <br/>
+
+
+           <span class="column-left"></span>
+           <span class="column-right">
+                 <input class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit}" />
+		    </span>
+
+           <br/><br/><br/>
+           <span class="column-left"></span>
+
+           <span class="column-right" style="color: #000000;">
+							          <span>注释<span class="star">*</span>是必需输入的</span>
+							    </span>
+
+           <br/><br/><br/>
+       </form>
+    </div>
+</div>
+</body>
+</html>

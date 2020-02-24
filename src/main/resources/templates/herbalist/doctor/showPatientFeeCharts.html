@@ -1,0 +1,120 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{label.submenu.patient.service.fee.report}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{label.submenu.patient.service.fee.report}">Display Patient and Fee Chart</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-left">
+                    <div th:replace="fragments/doctorMenu :: doctorMenu"/>
+                </div>
+
+                <div class="pd-right">
+                    <div class="title">
+                        <span class="left" th:text="#{label.submenu.patient.service.fee.report}">Display Patient and Fee Chart</span>
+                        <span class="right">
+                            <a th:href="@{javascript:void(0);}" th:text="#{label.menu.doctor}">">Doctor Home </a>
+                            <span style="color:#000000;" th:utext = "*{#strings.escapeXml(' > > ')}"/>
+	         	             <a th:href="@{javascript:void(0);}" th:text="#{label.submenu.patient.service.fee.report}">">Display Patient and Fee Chart</a>
+
+	         	         </span>
+                    </div>
+                    <div class="tabbable">
+                        <ul class="tabs">
+                            <li><a href="#tab1"><span th:text="#{label.submenu.show.weekly.report}"/></a></li>
+                            <li><a href="#tab2"><span th:text="#{label.submenu.show.monthly.report}"/></a></li>
+                            <li><a href="#tab3"><span th:text="#{label.submenu.show.all.yearly.report}"/></a></li>
+                        </ul>
+                        <div class="tabcontent">
+                            <div id="tab1" class="tab">
+                                <p>&nbsp;</p>
+                                <form name='showImageWeek' th:action="@{#}" >
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input id="prevButton" class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit.week.prev}" onclick="firstDayLastWeek(); return false;"/>
+                                    <span id="currentDate"></span>
+                                    <input id="nextButton" class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit.week.next}" onclick="firstDayNextWeek(); return false;" />
+                                </form>
+
+                                <p>&nbsp;</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;<img id="imageWeekly1" src="/herbalist/chart/doctor/weekly.png"/></p>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;<img id="imageWeekly2" src="/herbalist/chart/doctor/weeklyPatient.png"/></p>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;<img id="imageWeekly3" src="/herbalist/chart/doctor/weeklyServiceFee.png"/></p>
+
+                            </div>
+                            <div id="tab2" class="tab">
+                                <p>&nbsp;</p>
+                                <form name='showImageMonth' th:action="@{#}" >
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input id="prevButtonM" class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit.month.prev}" onclick="firstDayLastMonth(); return false;"/>
+                                    <span id="currentDateM"></span>
+                                    <input id="nextButtonM" class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit.month.next}" onclick="firstDayNextMonth(); return false;" />
+                                </form>
+                                <p><img id="imageMonthly1" src="/herbalist/chart/doctor/monthlyPatient.png"/></p>
+                                <p>&nbsp;</p>
+                                <p><img id="imageMonthly2" src="/herbalist/chart/doctor/monthlyServiceFee.png"/></p>
+                            </div>
+                            <div id="tab3" class="tab">
+                                <p>&nbsp;</p>
+                                <form name='showImageYear' th:action="@{#}" >
+                                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input id="prevButtonY" class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit.year.prev}" onclick="firstDayLastYear(); return false;"/>
+                                    <span id="currentDateY"></span>
+                                    <input id="nextButtonY" class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit.year.next}" onclick="firstDayNextYear(); return false;" />
+                                </form>
+                                <p><img id="imageYearly1" src="/herbalist/chart/doctor/yearly.png"/></p>
+                                <p>&nbsp;</p>
+                                <p><img id="imageYearly2" src="/herbalist/chart/doctor/yearlyPatient.png"/></p>
+                                <p>&nbsp;</p>
+                                <p><img id="imageYearly3" src="/herbalist/chart/doctor/yearlyServiceFee.png"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+<script>
+    var today = new Date();
+
+    // first day of week (Monday)
+    var weekDate = today.getDay();
+    if(weekDate === 0){
+        weekDate = 7;
+    }
+    var firstDayOfWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - weekDate + 1);
+    var dateString = firstDayOfWeek.toLocaleString('en-us', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$1-$2');
+    document.getElementById("currentDate").innerHTML =dateString; // 2018-07-16
+
+    // first day of Month
+    var firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    var dateStringM = firstDayOfMonth.toLocaleString('en-us', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$1-$2');
+    document.getElementById("currentDateM").innerHTML =dateStringM; // 2018-07-01
+
+   // first day of Year
+    var firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+    var dateStringY = firstDayOfYear.toLocaleString('en-us', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$1-$2');
+    document.getElementById("currentDateY").innerHTML =dateStringY; // 2018-01-01
+
+   // document.getElementById("currentDate").innerHTML =firstDayOfWeek.toLocaleString().substring(0, 10);  // 21/07/2018
+    document.getElementById('nextButton').style.visibility = 'hidden';
+    document.getElementById('nextButtonM').style.visibility = 'hidden';
+    document.getElementById('nextButtonY').style.visibility = 'hidden';
+</script>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+

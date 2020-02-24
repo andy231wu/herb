@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{label.pages.error.title}">Error Page</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <!--<div class="ban-wrap">
+        <div class="bg-wrap">&lt;!&ndash; load image from css file &ndash;&gt;</div>
+    </div>-->
+    <h2><span th:text="#{label.pages.error.title}">Error Page</span></h2>
+    <dl class="about">
+        <dt></dt>
+        <dd>
+               <!-- <h1>Oops... something went wrong.</h1>-->
+            <div style="padding: 15px;">
+                <span style="color:red;" th:text="#{error.page.cation}">Application Error</span>
+                <br />
+
+                <a style="color:blue;" th:href="@{/}" th:text="#{back.to.home.page}">Back to Home Page</a>
+            </div>
+            <div style="padding: 15px;">
+                <table border="2" class="table table-striped">
+                    <tr>
+                        <td th:text="#{error.date}">Date</td>
+                        <td><span th:text="${timestamp}" /></td>
+                    </tr>
+                    <tr>
+                        <td th:text="#{error.error}">Error</td>
+                        <td><span th:text="${error}" /></td>
+                    </tr>
+                    <tr>
+                        <td th:text="#{error.status}" >Status</td>
+                        <td><span th:text="${status}" /></td>
+                    </tr>
+                    <tr>
+                        <td th:text="#{error.message}">Message</td>
+                        <td><span th:text="${message}" /></td>
+                    </tr>
+ <!--
+                    <tr>
+                        <td>Exception</td>
+                        <td><span th:text="${exception}" /></td>
+                    </tr>-->
+
+                    <tr>
+                        <td colspan="2" th:text="#{error.trace}">Trace</td>
+                    </tr>
+                    <tr>
+                       <td colspan="2" >
+                           <pre><span th:text="${trace}" /></pre>
+                       </td>
+                    </tr>
+                </table>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

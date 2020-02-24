@@ -1,0 +1,90 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{label.menu.edit.global.parameter}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{label.menu.edit.global.parameter}">Edit Global Parameter Page</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-left">
+                    <div th:replace="fragments/adminMenu :: adminMenu"/>
+                </div>
+
+                <div class="pd-right">
+                    <div class="title">
+                        <span class="left" th:text="#{label.menu.edit.global.parameter}">Edit Global Parameter</span>
+                        <span class="right">
+                            <a th:href="@{javascript:void(0);}" th:text="#{label.menu.admin}">">Admin Home </a>
+                            <span style="color:#000000;" th:utext = "*{#strings.escapeXml(' > > ')}"/>
+	         	             <a th:href="@{javascript:void(0);}" th:text="#{label.menu.edit.global.parameter}">">Edit Global Parameter</a>
+
+	         	         </span>
+                    </div>
+
+                    <div class="input">
+                        <form name='globalParameter' th:action="@{/admin/editGlobalParameter}" th:object="${globalParameterCommand}" method='POST' onsubmit="return validate();">
+                            <span class="column-left2"></span>
+                            <span class="column-right">
+                                <p><span style="color:#FF9900;" th:text="#{label.global.parameter.title}">Global Parameter Title</span></p>
+							    </span><br/><br/>
+
+                            <span class="column-left2" th:text="#{label.number.of.doctor}">Number of doctor</span>
+                            <span class="column-right">
+                                   <input path="noOfDoctor" type='text' th:field='*{numberOfDoctor}' class="normal"/><span class="star">*</span>
+							        <span class="fieldError"><errors path="noOfDoctor" class="error"/></span>
+							    </span>  <br/> <br/>
+
+                            <span class="column-left2" th:text="#{label.available.days}">Available Days</span>
+                            <span class="column-right">
+							        <input path="days" type='text' th:field='*{daysAvailable}' value='' class="normal"/><span class="star">*</span>
+							        <span class="star">
+							            <span class="fieldError"><errors path="days" class="error"/></span>
+							        </span>
+							 </span>  <br/><br/>
+
+                            <span class="column-left2" th:text="#{label.number.of.clinic}">Number of Clinic</span>
+                            <span class="column-right">
+                                   <input path="noOfClinic" type='text' th:field='*{numberOfClinic}'  class="normal"/><span class="star">*</span>
+							        <span class="fieldError"><errors path="noOfClinic" class="error"/></span>
+							    </span>  <br/> <br/>
+
+                            <br/><br/><br/><br/> <br/>
+
+
+                            <span class="column-left"></span>
+                            <span class="column-right">
+                                 <input class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit}" />
+
+						    </span>
+
+                            <br/><br/><br/>
+                            <span class="column-left"></span>
+
+                            <span class="column-right" style="color: #000000;">
+							          <span>注释<span class="star">*</span>是必需输入的</span>
+							    </span>
+
+                            <br/><br/><br/>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+

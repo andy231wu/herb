@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{label.submenu.create.shop.detail}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{label.submenu.create.shop.detail}">Create Shop Info Page</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-left">
+                    <div th:replace="fragments/shopMenu :: shopMenu"/>
+                </div>
+
+                <div class="pd-right">
+                    <div class="title">
+                        <span class="left" th:text="#{label.submenu.create.shop.detail}">Create Shop Info Page</span>
+                        <span class="right">
+                            <a th:href="@{javascript:void(0);}" th:text="#{label.menu.owner}">">Shop Home </a>
+                            <span style="color:#000000;" th:utext = "*{#strings.escapeXml(' > > ')}"/>
+	         	             <a th:href="@{javascript:void(0);}" th:text="#{label.submenu.create.shop.detail}">">Create Shop Info Page</a>
+
+	         	         </span>
+                    </div>
+                    <div class="tabbable">
+                        <ul class="tabs">
+                            <li><a href="#tab1"><span th:text="#{label.submenu.create.shop.detail}"/></a></li>
+                            <li><a href="#tab2"><span th:text="#{label.submenu.create.shop.address}"/></a></li>
+                            <li><a href="#tab3"><span th:text="#{label.submenu.show.shop.info}"/></a></li>
+                            <li><a href="#tab4"><span th:text="#{label.submenu.edit.shop.detail}"/></a></li>
+                        </ul>
+                        <div class="tabcontent">
+                            <div id="tab1" class="tab">
+                                <div th:replace="herbalist/shop/fragments/shopDetailInputForm :: shopDetailInput"/>
+                            </div>
+                            <div id="tab2" class="tab">
+                                <div th:replace="herbalist/shop/fragments/shopAddressInputForm :: shopAddressInput"/>
+                            </div>
+                            <div id="tab3" class="tab">
+                                <div th:replace="herbalist/shop/fragments/showShopDetail :: showShopDetail"/>
+                            </div>
+                            <div id="tab4" class="tab">
+                                <p>
+                                <H2>
+                                    <span th:text="#{label.submenu.edit.shop.detail}"/>网页
+                                </H2>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+

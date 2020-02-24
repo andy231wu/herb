@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{label.pages.home.title}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <div style="width: 100%;">
+        <div class="ban-wrap">
+            <div class="bg-wrap"><!-- load image from css file --></div>
+        </div>
+    </div>
+    <h2><span th:text="#{system.functions.introduction}">System Function Introduction</span></h2>
+    <dl class="about">
+        <dt></dt>
+        <dd>
+            <div>
+
+                <span style="color:#FF9900;" th:text="#{welcome.message}">Welcome Message:</span><br />
+                <span th:text="#{system.overview}">System Overview:</span><br />
+
+                <span style="color:#FF9900;" th:text="#{system.functions}"></span><br />
+
+                <ul id="menuList">
+                    <li><a th:href="@{/shop/home}" th:text="#{label.menu.owner}">Owner Home</a></li>
+                    <li><a th:href="@{/doctor/home}" th:text="#{label.menu.doctor}">Doctor Home</a></li>
+                    <li><a th:href="@{/contactUs}" th:text="#{label.menu.contact.us}">Contract Us</a></li>
+                    <li><a th:href="@{/login}" th:text="#{label.menu.login}">Login</a></li>
+                </ul>
+
+
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

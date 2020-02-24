@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="adminMenu">
+    <ul id="vMenu">
+        <li class="vMenu_00"><span th:text="#{admin.home.overview}">Owner Functions Overview</span> </li>
+        <li class="vMenu_01"><a th:href="@{/admin/showGlobalParameter}" th:text="#{label.menu.show.global.parameter}">View System Parameter</a></li>
+        <li class="vMenu_01"><a th:href="@{/admin/editGlobalParameter}" th:text="#{label.menu.edit.global.parameter}">Edit System Parameter</a></li>
+        <li class="vMenu_01"><a th:href="@{/admin/createShopOwner}" th:text="#{label.menu.create.shop.owner}">Create Shop Owner</a></li>
+        <li class="vMenu_01"><a th:href="@{/admin/displayAllUsers}" th:text="#{label.menu.display.all.users}">Display All Users</a></li>
+    </ul>
+</div>
+</body>
+</html>

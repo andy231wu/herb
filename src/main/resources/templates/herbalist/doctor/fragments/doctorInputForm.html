@@ -1,0 +1,141 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="doctorDetailInput">
+   <div class="input">
+       <!--feedback messae -->
+       <div id="successFeedback" th:if="${feedbackMessage != null}">
+           <span class="column-left2"></span>
+           <span class="column-right2">
+               <div id="message-holder">
+                       <div class="messageblock hidden" th:text="${feedbackMessage}">feedback message</div>
+               </div>
+               <script id="template-alert-message" type="text/x-handlebars-template">
+                   <div id="alert-message" class="alert alert-success fade in">
+                       <a class="close" data-dismiss="alert">&times;</a>
+                       {{message}}
+                   </div>
+               </script>
+           </span>
+           <br/>
+       </div>
+
+       <span th:if="${errorMessage != null}">
+           <span class="column-left2"></span>
+           <span class="column-right">
+                <p><span style="color:red;" th:text="${errorMessage}">Error Message</span></p>
+           </span><br/>
+       </span>
+
+       <form name='createPatientDetail' th:action="@{/doctor/createDoctorDetail}" th:object="${doctorCommand}" method='POST' onsubmit="return validate();">
+
+            <span th:if="${#fields.hasErrors('*')}">
+                  <span style="color:#FF0000;" th:each="err : ${#fields.errors('*')}" >
+                      <span class="column-left2"></span>
+                      <span class="column-right">
+                          <span th:text="${err}"></span>
+                      </span>
+                      <br/>
+                  </span>
+                <br/>
+            </span>
+
+            <span class="column-left2"></span>
+            <span class="column-right">
+                 <p><span style="color:#FF9900;" th:text="#{label.doctor.detail.caption}">Doctor Detail</span></p>
+            </span><br/><br/>
+
+            <span class="column-left2" th:text="#{label.form.doctor.last.name}">Doctor Last Name</span>
+            <span class="column-right">
+                  <input path="lastName" type='text' th:field='*{lastName}' value='' class="normal"/><span class="star">*</span>
+             </span>  <br/><br/>
+
+            <span class="column-left2" th:text="#{label.form.doctor.first.name}">Doctor First Name</span>
+            <span class="column-right">
+                  <input path="firstName" type='text' th:field='*{firstName}' class="normal"/><span class="star">*</span>
+            </span>  <br/> <br/>
+
+            <span class="column-left2" th:text="#{label.form.patient.sex}">Sex</span>
+            <span class="column-right">
+               <span>
+                    <input style="width: 30px" type='radio' th:field='*{sex}' th:value="#{patient.sex.man}" th:checked="checked" th:text="#{patient.sex.man}"  />
+                    <input style="width: 30px" type='radio' th:field='*{sex}' th:value="#{patient.sex.female}" th:text="#{patient.sex.female}"/>
+               </span>
+            </span>  <br/> <br/>
+
+            <span class="column-left2"  th:text="#{label.form.doctor.phone}">Phone</span>
+            <span class="column-right">
+                   <input path="mobile" style="width: 150px;" type='text' th:field='*{mobile}' class="normal"/><span class="star">*</span>
+             </span>  <br/> <br/>
+
+            <span class="column-left2" th:text="#{label.form.doctor.email}">Email</span>
+            <span class="column-right">
+                  <input path="email" type='text' th:field='*{email}' class="normal"/><span class="star">*</span>
+            </span>  <br/> <br/>
+
+            <span class="column-left2" th:text="#{label.form.doctor.default.fee}">default fee</span>
+            <span class="column-right">
+                  <input path="defaultFee"  style="width: 50px;" type='text' th:field='*{defaultFee}' class="normal"/>
+            </span>  <br/> <br/>
+
+           <span class="column-left2" th:text="#{label.form.doctor.show.patient.size}">show patient size</span>
+           <span class="column-right">
+                  <input path="showPatientPageSize"  style="width: 40px;" type='text' th:field='*{showPatientPageSize}' class="normal"/>
+            </span>  <br/> <br/>
+
+            <span class="column-left2" th:text="#{label.form.doctor.herb.size}">default fee</span>
+            <span class="column-right">
+                  <input path="herbSize"  style="width: 40px;" type='text' th:field='*{herbSize}' class="normal"/>
+            </span>  <br/> <br/>
+
+            <span class="column-left2" th:text="#{label.form.doctor.history.record.size}">Show Number of History Prescription</span>
+            <span class="column-right">
+                <input type="text" style="width: 40px;" th:field='*{showPresHistorySize}'/>
+            </span>  <br/> <br/>
+
+            <span class="column-left2" th:text="#{label.form.doctor.shop.location}">Shop Address</span>
+            <span class="column-right">
+                   <!-- <select  th:field="*{clinicAddress.addrId}"  id="dropOperator">-->
+                     <select  th:field="*{addrId}"  id="dropOperator">
+                        <option th:each="address : ${clinicAddresses}" th:value="${address.addrId}" th:text="${address.suburb}"></option>
+                    </select>
+            </span>  <br/> <br/>
+
+            <span class="column-left2" th:text="#{label.form.doctor.print.chinese.herbname.only}">Print Chinese Herb Name Only</span>
+            <span class="column-right">
+                  <input type="checkbox" style="width: 30px;" th:checked="checked" th:field='*{printChineseNameOnly}'/>&nbsp;&nbsp;
+                  <span  style="font-weight: bold;"  th:text="#{label.form.doctor.copy.prev.prescription}">Copy prev prescription when creating prescription</span>&nbsp;&nbsp;
+                  <input type="checkbox" style="width: 30px;" th:field='*{copyPrePrescription}'/>&nbsp;&nbsp;
+                  <span style="font-weight: bold;"   th:text="#{label.form.doctor.validate.herb.name}">Validate Herb Name when creating prescription</span>&nbsp;&nbsp;
+                  <input type="checkbox" style="width: 30px;" th:field='*{validateHerbName}'/>
+            </span>  <br/> <br/>
+
+            <span class="column-right">
+                  <input hidden path="doctorId" type='text' th:field='*{drID}' class="normal"/>
+            </span>
+
+            <br/>
+
+            <span class="column-left2"></span>
+            <span class="column-right">
+                    <input class="btn btn-primary" style="width: 80px;float: left;" name="submit" type="submit" th:value="#{label.form.submit}" />
+            </span>
+
+            <br/><br/><br/>
+            <span class="column-left2"></span>
+            <span class="column-right" style="color: #000000;">
+                <span th:text="#{label.notes1}">注释</span>
+                <span class="star">*</span>
+                <span th:text="#{label.notes2}">是必需输入的</span>
+            </span>
+
+            <br/><br/><br/>
+       </form>
+   </div>
+</div>
+
+</body>
+</html>

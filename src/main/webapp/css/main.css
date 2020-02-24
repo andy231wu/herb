@@ -1,0 +1,401 @@
+/****************************
+Update  : 15/05/2015
+WeiSite : http://new1step.com.au/sendx
+Using   : for sendx site
+
+****************************/
+/*  . -> point to class, # -> to id in jsp */
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+html {
+	-webkit-text-size-adjust: none;
+}
+body {
+	color: #7a7a7a;
+	font: 12px/1.5em Arial, Verdana, "SimSun", "Microsoft YaHei", "SimHei", "STHeiti", Helvetica, sans-serif;
+}
+body a {
+	color: #7a7a7a;
+	text-decoration: none;
+	outline: none;
+}
+/*
+body a:hover {
+	color: #ad9444;
+	text-decoration: underline;
+}*/
+table {
+	border-collapse: collapse;
+}
+a img {
+	border: none;
+	vertical-align: middle;
+}
+td, button {
+	border: none;
+}
+ul li {
+	list-style: none;
+	cursor: pointer;
+}
+i,em{
+	font-style:normal;
+}
+/*-- Other --*/
+button {
+	cursor: pointer;
+	background: none;
+	color: #555;
+}
+label {
+	color: #666;
+	vertical-align: middle;
+}
+
+input {
+	width: 142px;
+	font: 12pt/1.5em Verdana, Arial, "SimSun", Helvetica, sans-serif;
+	border: 1px solid #000;
+}
+
+.subtitle{
+	font: 14pt/1.5em Verdana, Arial, "SimSun", Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.noinput {
+	width: 20px;
+	background: none;
+}
+
+textarea {
+	font: 12pt/1.5em Verdana, Arial, "SimSun", Helvetica, sans-serif;
+	border: 1px solid #000;
+}
+.check {
+	font-size: 10px;
+}
+.red {
+	color: #c50d00;
+}
+.blue {
+	color: #005e9c;
+}
+.green {
+	color: #008000;
+}
+.yellow {
+	color: #ee850a;
+}
+.gold {
+	color: #ad9444;
+}
+.fLeft {
+	float: left;
+}
+.fRight {
+	float: right;
+}
+.tLeft {
+	text-align: left;
+}
+.tRight {
+	text-align: right;
+}
+
+/*-- Top Panel*/
+.top-wrap {
+	width: 100%;
+	height: 120px;
+	background-color:#4ACBD4;
+}
+
+.top-wrap div.top{
+	width: 1000px;
+	height: 120px;
+	margin: 0 auto;
+	background-color:#008001;
+}
+.top-wrap div.top .fl-left{
+	width:300px;
+	height:120px;
+	float:left;
+}
+
+.top-wrap div.top .fl-left img{
+    vertical-align: top;
+}
+.top-wrap div.top .fl-left .img-left{
+	padding-left: 20px;
+}
+
+.top-wrap div.top .fl-right .img-right{
+	padding-top:15px;
+}
+.top-wrap div.top .fl-right,.top-wrap div.top .fl-right-login{
+	float:right;
+	height:120px;
+	width:700px;
+}
+
+.top-wrap div.top .fl-right span{
+	display:block;
+	float:left;
+	width:280px;
+	height:70px;
+}
+
+/*-- Horizontal Menu --*/
+.menu{
+	overflow: hidden;
+	width: 100%;
+	height: 45px;
+	background-color:#4ACBD4;
+	/*	line-height:51px;
+        /*background-image:url(../images/menu-bg.gif);
+        background-repeat:repeat-x;
+        /* position: relative;
+        z-index: 100; */
+}
+#header{
+	width:1000px;
+	height:45px;
+	background-color:red;
+	margin:0 auto;
+}
+#header ul{
+	height:45px;
+	width:1000px;
+	position:absolute;
+	padding-left: 20px;
+	background-color:red;
+}
+
+#header li{
+	float:left;
+	width:100px;
+	height:45px;
+	position:relative;
+	z-index:1;
+}
+
+/*#header li a span{*/
+#header li a {
+	float:left;
+	width:100px;
+	height:45px;
+	line-height:45px;
+	text-align:center;
+	text-decoration:none;
+	font-size:14pt;
+	color:#fff;
+	font-family: 'Microsoft YaHei';
+}
+
+#header li#menu_xx{
+	float:left;
+	width:140px;
+	height:45px;
+	position:relative;
+}
+
+#header li#menu_xx a {
+	float:left;
+	width:140px;
+	height:45px;
+	line-height:45px;
+	text-align:center;
+	text-decoration:none;
+	font-size:14pt;
+	color:#fff;
+	font-family: 'Microsoft YaHei';
+}
+
+/*
+#header li a span{
+	float:left;
+	width:180px;
+	height:49px;
+	position:relative;
+	z-index:1;
+}
+
+#header .normal, #header .active{
+	float:left;
+	width:85px;
+	height:49px;
+	position:relative;
+	z-index:1;
+}
+*/
+#header li.selected,#move_ul li.back{
+	background: url(../images/menu-hover.png) no-repeat center bottom;
+}
+/*
+#header li#menu_02.selected{
+	background: url(../images/long-menu-hover.jpg) no-repeat center bottom;
+}
+#header li#menu_04.selected{
+	background: url(../images/long-menu-hover.jpg) no-repeat center bottom;
+}*/
+#header li#menu_05.selected{
+	 background: url(../images/long-menu-hover.jpg) no-repeat center bottom;
+ }
+#header li#menu_06.selected{
+	background: url(../images/long-menu-hover.jpg) no-repeat center bottom;
+}
+/*
+#header li#menu_07.selected{
+	background: url(../images/long-menu-hover.jpg) no-repeat center bottom;
+}*/
+
+#header li.selected a{
+	color:#060d10;
+	Z-INDEX: 10;
+
+}
+/*
+#header li#menu_04.selected a{
+	color:#c89664;
+}*/
+
+#btn_bg{
+	width:85px;
+	height:49px;
+	background:url(../images/menu-hover.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	position:absolute;
+	overflow:hidden;
+	left:0px;
+	bottom:0;
+	z-index:2;
+}
+#btn_bg ul{
+	width:1000px;
+	left:0px;
+	position:absolute;
+}
+/*logo*/
+/*
+div.logo{
+	position:relative;
+	width:319px;
+	height:49px;
+	float:left;
+}
+div.logo .img{
+	position:absolute;
+	width:319px;
+	height:135px;
+	top: -86px;
+	left: -5px;
+	z-index:999;
+	background-image:url(../images/logo.png);
+	background-repeat:no-repeat;
+}
+*/
+/* Shop */
+#header #mainMenuItems #menu_02:hover .submenuShop{	display: block;}
+#header #mainMenuItems .submenuShopEx{margin-top: 45px; padding-left: 10px; background: #000; border-radius: 16px; width: 140px;height: 140px;}
+#header #mainMenuItems .submenuShop{position: absolute;width: 120px;display: none; margin-left: -25px;}
+#header #mainMenuItems .submenuShop .submenuShopEx a{width: auto;font-size: 14px;margin-left: 15px;display: block;color:#FFF;line-height: 30px;height: 25px;}
+#header #mainMenuItems .submenuShop .submenuShopEx a:hover {color: #FFF; background: #CC6600;}
+
+/* Shop */
+#header #mainMenuItems #menu_03:hover .submenuDoctor{	display: block;}
+#header #mainMenuItems .submenuDoctorEx{margin-top: 45px; padding-left: 10px; background: #000; border-radius: 16px; width: 140px;height: 180px;}
+#header #mainMenuItems .submenuDoctor{position: absolute;width: 120px;display: none; margin-left: -25px;}
+#header #mainMenuItems .submenuDoctor .submenuDoctorEx a{width: auto;font-size: 14px;margin-left: 20px;display: block;color:#FFF;line-height: 30px;height: 25px;}
+#header #mainMenuItems .submenuDoctor .submenuDoctorEx a:hover {color: #FFF; background: #CC6600;}
+
+/* Admin */
+#header #mainMenuItems #menu_04:hover .submenuAdmin{	display: block;}
+#header #mainMenuItems .submenuAdminEx{margin-top: 45px; padding-left: 15px; background: #000; border-radius: 16px; width: 140px;height: 110px;}
+#header #mainMenuItems .submenuAdmin{position: absolute;width: 120px;display: none; margin-left: -20px;}
+#header #mainMenuItems .submenuAdmin .submenuAdminEx a{width: auto;font-size: 14px;margin-left: 10px;display: block;color:#FFF;line-height: 30px;height: 25px;}
+#header #mainMenuItems .submenuAdmin .submenuAdminEx a:hover {color: #FFF; background: #CC6600;}
+
+
+/* tab panel */
+.pd-right .tabbable {padding: 10px 0 10px 0; width: 770px; color: #000000; line-height: 20px; font-size:14px;}
+.pd-right .tabbable .tabs {list-style: none; margin: 0 10px; padding: 0;}
+.pd-right .tabbable .tabs  li {list-style: none; margin: 0; padding: 0; display: inline-block; position: relative; z-index: 0;}
+.pd-right .tabbable .tabs li a {text-decoration: none; color: #000; border: 1px solid #ccc; padding: 5px; display: inline-block; border-radius: 5px 5px 0 0; background: #f5f5f5;}
+.pd-right .tabbable .tabs li a.active, .tabbable .tabs li a:hover {border-bottom-color: #fff; background: green; color:#fff;}
+
+.pd-right .tabcontent {border: 1px solid #ccc; margin-top: -1px; min-height:350px;}
+.pd-right .tabcontent .column-left{
+	float: left;
+	padding: 5px 0 0 20px;
+	width: 100px;
+	color: #000000;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+.pd-right .tabcontent .column-right {
+	float: left;
+	width: 600px;
+}
+/*
+.pd-right .tabcontent {border: 1px solid #ccc; margin-top: -1px; min-height:350px;}
+.pd-right .tabcontent div input#button {color: #fff; background-color: green; height: 37px;}
+.pd-right .tabcontent div ul li{
+	width: 750px;
+	border-bottom: 2px solid #097235;
+	overflow: hidden;
+	display: inline-block;
+	padding: 10px;
+}
+
+.pd-right .tabcontent div ul div{
+	display: inline-block;
+}
+.pd-right .tabcontent div ul li .left-product{
+	width:130px;
+	padding-left:10px;
+}
+
+.pd-right .tabcontent div ul li .left-product img{
+	vertical-align: top;
+}
+
+.pd-right .tabcontent div ul li .right-product-desc{
+	width:600px;
+	padding-left:10px;
+}
+
+.pd-right .tabcontent div ul li div span a{
+	padding-left:10px;
+	font-size:14px;
+	height: 30px;
+	color: #000000;
+}
+
+.pd-right .tabcontent div#tab1 div{
+	padding: 10px 0 10px 10px;
+}
+
+.pd-right .tabcontent div#tab4 p{
+	font-size:14px;
+	padding: 20px 0 0 20px;
+}
+
+.pd-right .tabcontent .apps p{
+	font-size:14px;
+	padding: 20px 0 0 20px;
+}
+
+.pd-right .tabcontent div#tab4  p a{
+	color: #000000;
+}
+
+.pd-right .tabcontent .apps p a{
+	color: #000000;
+}
+
+*/

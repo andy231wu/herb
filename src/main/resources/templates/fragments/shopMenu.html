@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div th:fragment="shopMenu">
+    <ul id="vMenu">
+        <li class="vMenu_00"><span th:text="#{shop.home.overview}">Owner Functions Overview</span> </li>
+        <li class="vMenu_01">
+            <a th:href="@{/shop/createShopDetail}" th:text="#{label.submenu.create.shop.detail}">Create Shop Detail</a>
+        </li>
+        <li class="vMenu_01">
+            <a th:href="@{/shop/createDoctorUser}" th:text="#{label.submenu.create.doctor.user}">Create Doctor User</a>
+        </li>
+        <li class="vMenu_01">
+            <a th:href="@{/shop/createHerb}" th:text="#{label.submenu.create.herb}">Create a Herb</a>
+        </li>
+        <li class="vMenu_01">
+            <a th:href="@{/shop/pickupPrescription}" th:text="#{label.submenu.pickup.subscription}">Pick up an unprocessed prescription</a>
+        </li>
+        <li class="vMenu_01">
+            <a th:href="@{/shop/showPatientIncomeCharts}" th:text="#{label.submenu.patient.income.report}">Display Patient and Income chart</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="editPrescriptionInput">
+   <div class="input">
+     <span th:if="${currPatient != null}">
+        <div>
+           <span class="column-left"></span>
+           <span class="column-right">
+               <span th:if="${currPatient != null}">
+                   <span th:text="#{label.patient.name}">Name</span>:&nbsp;
+                   <span th:text="${currPatient.lastName}">Patient Surname</span>
+                   <span th:text="${currPatient.firstName}">Patient first Name</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                   <span th:text="#{label.prescription.id}">Prescription Id</span>:&nbsp;
+                   <span th:text="${currPrescription.presId}">Prescription Id</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                   <span th:text="#{label.date}">date</span>:&nbsp;
+                   <strong th:text="${#temporals.format(now, 'yyyy-MM-dd HH:mm')}">31/12/2015 15:00</strong>
+               </span>
+           </span>
+           <br/>
+           <span><hr></span>
+
+        </div>
+
+        <form name='updatePrescriptionDetail' th:action="@{/doctor/editPrescriptionPost}" th:object="${currPrescription}" method='POST' onsubmit="return validate();">
+
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span th:text="#{label.new.herb.group.caption}">Herb Class</span>:&nbsp;
+                    <select  id="dropHerbGroup">
+                        <option th:value="null" th:text="#{label.form.doctor.select.all.class}"></option>
+                        <option th:each="herbClass: ${herbClasses}" th:value="${herbClass.name}" th:text="${herbClass.name}"></option>
+                    </select>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span th:text="#{label.herb.name}">Herb Name</span>:&nbsp;
+
+                    <select id="dropHerbName">
+                        <option th:value="null" th:text="#{label.form.doctor.select.herb.name}"></option>
+                        <option th:each="herbName : ${herbNames}" th:value="${herbName}" th:text="${herName}"></option>
+                    </select>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                   <span th:text="#{label.form.doctor.medicine.packages}">Packages</span>:&nbsp;
+                   <span>
+                       <input style="width: 50px;" path="medicinePackages" type='text' th:field='*{medicinePackages}' class="normal"/>
+                   </span>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                   <span th:text="#{label.form.doctor.medicine.days}">Days used</span>&nbsp;
+                   <span>
+                       <input style="width: 50px;" path="medicineDays" type='text' th:field='*{medicineDays}' value='' class="normal"/>
+                   </span>
+            </span><br/><br/>
+
+            <span class="column-left3"></span>
+            <span class="column-right3">
+
+            <table border="2" class="table table-striped">
+                <thead>
+                     <tr>
+                        <th th:text="#{label.herb.name}"></th>
+                        <th th:text="#{label.herb.weight}"></th>
+                        <th th:text="#{label.herb.name}"></th>
+                        <th th:text="#{label.herb.weight}"></th>
+                        <th th:text="#{label.herb.name}"></th>
+                        <th th:text="#{label.herb.weight}"></th>
+                    </tr>
+                </thead>
+
+                <tbody th:each="herbItem, stat : *{herbItems}" >
+                     <span th:if="${stat.index % 3 == 0}">
+                         <tr >
+                            <td >
+                                <input th:type="text" style="width: 120px; font-weight: bold" th:field="*{herbItems[__${stat.index}__].chineseName}" />
+                            </td>
+                            <td >
+                                <input th:type="number" style="width: 60px; font-weight: bold" th:field="*{herbItems[__${stat.index}__].gram}" />
+                            </td>
+                            <td>
+                                <input th:type="text" style="width: 120px; font-weight: bold" th:field="*{herbItems[__${stat.index + 1}__].chineseName}" />
+                            </td>
+                            <td>
+                                <input th:type="number" style="width: 60px; font-weight: bold" th:field="*{herbItems[__${stat.index + 1}__].gram}" />
+                            </td>
+                            <td>
+                                <input th:type="text" style="width: 120px; font-weight: bold" th:field="*{herbItems[__${stat.index + 2}__].chineseName}" />
+                            </td>
+                            <td>
+                                <input th:type="number" style="width: 60px; font-weight: bold" th:field="*{herbItems[__${stat.index + 2}__].gram}" />
+                            </td>
+
+                        </tr>
+                     </span>
+                </tbody>
+            </table>
+
+		</span>  <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+        <span class="column-left"></span>
+        <span class="column-right">
+                <input class="btn btn-primary" style="width: 80px;float: right;" name="submit" type="submit" th:value="#{label.form.submit}" />
+		 </span>
+         <input hidden type = "text" th:field="*{presId}" />
+         <input hidden type = "text" id="herbSize" th:field="*{herbSize}" />
+         <input hidden type = "text" id="selectHerbCaption" th:field="*{selectHerbCaption}" />
+
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    </form>
+       </span>
+   </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+
+The following data audit issues have been found in the GPR.
+
+#foreach( $item in $items )
+${item.message}
+#end

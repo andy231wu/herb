@@ -1,0 +1,117 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="patientEditInput">
+   <div class="input">
+       <!--feedback messae -->
+       <div id="successFeedback" th:if="${feedbackMessage != null}">
+           <span class="column-left"></span>
+           <span class="column-right">
+               <div id="message-holder">
+                       <div class="messageblock hidden" th:text="${feedbackMessage}">feedback message</div>
+               </div>
+               <script id="template-alert-message" type="text/x-handlebars-template">
+                   <div id="alert-message" class="alert alert-success fade in">
+                       <a class="close" data-dismiss="alert">&times;</a>
+                       {{message}}
+                   </div>
+               </script>
+           </span>
+           <br />
+       </div>
+       <span th:if="${errorMessage != null}">
+           <span class="column-left"></span>
+           <span class="column-right">
+                <p><span style="color:red;" th:text="${errorMessage}">Error Message</span></p>
+           </span><br/>
+       </span>
+
+       <form name='searchPatientDetail' th:action="@{/doctor/searchPatientDetail}" th:object="${searchCommand}" method="post" >
+           <span class="column-left"></span>
+           <span class="column-right">
+               <span th:text="#{label.form.patient.phone}">Phone</span>/<span th:text="#{label.form.patient.first.name}">First Name</span>
+               <input path="patientSearchString" type='text' style="width: 200px;" th:field='*{patientSearchString}' />
+               <input class="btn btn-success" style="width: 80px;" name="submit" type="submit" th:value="#{label.search}" />
+           </span>
+       </form>
+       <br/><br/>
+       <div class="line"></div>
+       <br/>
+
+    <form name='updatePatientDetail' th:action="@{/doctor/updatePatientDetail}" th:object="${patientCommand}" method='POST' onsubmit="return validate();">
+        <span th:if="${#fields.hasErrors('*')}">
+             <span style="color:#FF0000;" th:each="err : ${#fields.errors('*')}" >
+                  <span class="column-left2"></span>
+                  <span class="column-right">
+                      <span th:text="${err}"></span>
+                  </span>
+                  <br/>
+             </span>
+            <br/>
+        </span>
+
+        <span class="column-left"></span>
+        <span class="column-right">
+            <span th:if="${patientCommand.pID == null}">
+                 <p><span style="color:#FF9900;" th:text="#{label.patient.detail.caption.add}">Patient Detail</span></p>
+            </span>
+             <span th:if="${patientCommand.pID != null}">
+                 <p><span style="color:#FF9900;" th:text="#{label.patient.detail.caption.edit}">Patient Detail</span></p>
+            </span>
+		</span><br/><br/>
+
+        <span class="column-left" th:text="#{label.form.patient.last.name}">Patient Last Name</span>
+        <span class="column-right">
+              <input path="lastName" type='text' th:field='*{lastName}' value='' class="normal"/><span class="star">*</span>
+		 </span>  <br/><br/>
+
+        <span class="column-left" th:text="#{label.form.patient.first.name}">Patient First Name</span>
+        <span class="column-right">
+              <input path="firstName" type='text' th:field='*{firstName}' class="normal"/><span class="star">*</span>
+		</span>  <br/> <br/>
+
+
+        <span class="column-left" th:text="#{label.form.patient.sex}">Sex</span>
+        <span class="column-right">
+           <span>
+                <input style="width: 30px" type='radio' th:field='*{sex}' th:value="#{patient.sex.man}" th:checked="true" th:text="#{patient.sex.man}"  />
+                <input style="width: 30px" type='radio' th:field='*{sex}' th:value="#{patient.sex.female}" th:text="#{patient.sex.female}"/>
+           </span>
+		</span>  <br/> <br/>
+
+        <span class="column-left" th:text="#{label.form.patient.phone}">Phone</span>
+        <span class="column-right">
+               <input path="phone" type='text' th:field='*{phone}' class="normal"/><span class="star">*</span>
+		 </span>  <br/> <br/>
+
+        <span class="column-left" th:text="#{label.form.patient.dob}">Patient Birthday</span>
+        <span class="column-right">
+             <input path="dob" type='text' th:field='*{dobString}' class="normal"/><span class="star">*</span>
+                                                        <span th:text="#{label.form.patient.dob.format}"/>
+		</span>
+        <span hidden><input type='text' th:field='*{pID}' class="normal"/></span>
+        <br/><br/><br/>
+
+        <span class="column-left"></span>
+        <span class="column-right">
+              <input class="btn btn-primary" style="width: 80px;float: left;" name="submit" type="submit" th:value="#{label.form.submit}" />
+        </span>
+
+        <br/><br/><br/>
+        <span class="column-left"></span>
+        <span class="column-right" style="color: #000000;">
+                <span th:text="#{label.notes1}">注释</span>
+                <span class="star">*</span>
+                <span th:text="#{label.notes2}">是必需输入的</span>
+         </span>
+
+        <br/><br/><br/>
+    </form>
+
+</div>
+</div>
+</body>
+</html>

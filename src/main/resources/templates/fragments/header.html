@@ -1,0 +1,110 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:fragment="header-css">
+        <meta language="java" http-equiv="Content-Type" content="text/html; charset=utf-8" pageEncoding="UTF-8">
+
+        <!-- this is header-css -->
+        <link rel="stylesheet" th:href="@{/wro/css/all.css}" />
+        <script  th:src="@{/wro/js/all.js}"></script>
+
+    </div>
+
+</head>
+<body>
+<div th:fragment="header">
+    <script type="text/javascript">
+        var ctx="/";
+        var loginStatus='';
+        var pageUrl = window.location.href;
+    </script>
+
+    <div class="top-wrap">
+        <div class="top">
+            <div class="fl-left">
+                <img th:src="@{/images/new1steplogo.svg}" title="Herb" />
+                <svg width="160" height="100">
+
+                    <text x="55"  y="15" transform="rotate(30 20,40)" style="font-family: sans-serif;
+                          font-size: 25pt; stroke: #000000; fill: red;">中药行</text>
+
+                    对不起，您的浏览器不支持嵌入式SVG。
+                </svg>
+            </div>
+
+            <div class="fl-right">
+                <span th:if="${session.shop == null}">
+                    <svg width="700" height="120">
+                        <circle cx="80" cy="60" r="45" fill="purple" />
+                         <text x="70" y="70" font-family="sans-serif" font-size="30pt" fill="white" th:text="#{label.head.title}">
+                         </text>
+
+                        对不起，您的浏览器不支持嵌入式SVG。
+                    </svg>
+                </span>
+                <span th:if="${session.shop != null}">
+                    <svg width="700" height="120">
+                        <circle cx="80" cy="60" r="45" fill="purple" />
+                        <text x="70" y="70" font-family="sans-serif" font-size="30pt" fill="white" th:text="${session.shop.chineseName}">
+                        </text>
+
+                        对不起，您的浏览器不支持嵌入式SVG。
+                    </svg>
+                    
+                </span>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- this is header -->
+
+    <div id="navbar" class="menu">
+        <div id="header">
+            <ul id="mainMenuItems">
+                <li id="menu_01"><a th:href="@{/home}" th:text="#{label.menu.home}">Home</a></li>
+                <li id="menu_02"><a th:href="@{/shop/home}" th:text="#{label.menu.owner}">Shop Owner Home</a>
+                    <div class="submenuShop" id="shopSubmenu">
+                        <div class="submenuShopEx">
+                            <a th:href="@{/shop/createShopDetail}" th:text="#{label.submenu.create.shop.detail}">Create Shop Detail</a>
+                            <a th:href="@{/shop/createDoctorUser}" th:text="#{label.submenu.create.doctor.user}">Create Doctor User</a>
+                            <a th:href="@{/shop/createHerb}" th:text="#{label.submenu.create.herb}">Create a Herb</a>
+                            <a th:href="@{/shop/pickupPrescription}" th:text="#{label.submenu.pickup.subscription}">Pick up an unprocessed prescription</a>
+                            <a th:href="@{/shop/showPatientIncomeCharts}" th:text="#{label.submenu.patient.income.report}">Display Patient and Income</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li id="menu_03"><a th:href="@{/doctor/home}" th:text="#{label.menu.doctor}">Doctor Home</a>
+                    <div class="submenuDoctor" id="doctorSubmenu">
+                        <div class="submenuDoctorEx">
+                            <a th:href="@{/doctor/createDoctorDetail}" th:text="#{label.submenu.create.doctor.detail}">Create Doctor Detail</a>
+                            <a th:href="@{/doctor/createPatientDetail}" th:text="#{label.submenu.create.patient.detail}">Create Patient Detail</a>
+                            <a th:href="@{/doctor/createPrescription}" th:text="#{label.submenu.create.prescription}">Create Subscription</a>
+                            <a th:href="@{/doctor/editPrintPrescription}" th:text="#{label.submenu.amend.print.prescription}">Edit or print Subscription</a>
+                            <a th:href="@{/doctor/searchHistoryRecord}" th:text="#{label.submenu.history.record.search}">Search History Record</a>
+                            <a th:href="@{/doctor/showPatientFeeCharts}" th:text="#{label.submenu.patient.service.fee.report}">Display Patient and Fee chart</a>
+                            <a th:href="@{/doctor/purgeOldPrescriptions}" th:text="#{label.submenu.purge.old.prescriptions}">Purge Old Prescription</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li id="menu_04"><a th:href="@{/login}" th:text="#{label.menu.login}">Login</a></li>
+
+                <li id="menu_05"><a th:href="@{/contactUs}" th:text="#{label.menu.contact.us}">Contract Us</a></li>
+
+                <li id="menu_06"><a th:href="@{/userGuide}" th:text="#{label.menu.user.guide}">Contract Us</a></li>
+                <li id="menu_07"><a href="?language=zh_CN">中文</a></li>
+
+                <li id="menu_08"><a href="?language=en">English</a></span></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!--for feedback/error message only-->
+/* omit */
+
+
+</body>
+</html>

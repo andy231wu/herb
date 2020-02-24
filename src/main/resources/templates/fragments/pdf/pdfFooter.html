@@ -1,0 +1,44 @@
+<div th:fragment="footer">
+
+ <!--   <span style="float: right">医师 Herbalist: [[${data.getDoctorSignature()}]] <br /></span>-->
+    <table>
+        <tr>
+            <td class="right">
+                医师 Herbalist: [[${data.getDoctorSignature()}]]
+            </td>
+        </tr>
+    </table>
+
+    <hr />
+
+    <div>
+        <table>
+            <td>
+                煎服法: <br />
+                [[${data.getMedicinePackages()}]] 剂药, 煎服 [[${data.getMedicineDays()}]] 天 <br />
+                头煎: 清水 [[${data.getWaterCups()}]] 碗, 煎存 [[${data.getWaterRemain()}]] 碗 <br />
+                饭前/后 [[${data.getDrinkTime()}]] 小时服 <br />
+                二煎: 清水 [[${data.getSecondWaterCups()}]] 碗, 煎存 [[${data.getSecondWaterRemain()}]] 碗 <br />
+                饭前/后 [[${data.getDrinkTime()}]] 小时服 <br />
+                注释： <br />
+                (1）一碗= 250毫升 <br />
+                (2）用陶瓷煲煎中药, 忌用金属器具
+            </td>
+            <td>
+                Directions: <br />
+                [[${data.getMedicinePackages()}]] packets for [[${data.getMedicineDays()}]] days <br />
+                Put one packet of herbs in the pot, add [[${data.getWaterCups()}]] cups of water <br />
+                Bring to boil: simmer until [[${data.getWaterRemain()}]] cup remains <br />
+                Drink it whilst warm [[${data.getDrinkTime()}]] hour(s) after / before eating <br />
+                Keep herbs in the fridge for next day <br />
+                2nd cooking: add [[${data.getSecondWaterCups()}]] cups of water and cook until [[${data.getSecondWaterRemain()}]] cup
+                <br /> remains, then discard herbs <br />
+                Drink it whilst warm [[${data.getDrinkTime()}]] hour(s) after / before eating <br />
+                Note: <br />
+                (1) One cup = 250ml (2) Cook herbs in clay-earthenware<br />
+                or glass pot. Do not use metal-ware
+            </td>
+        </table>
+    </div>
+
+</div>

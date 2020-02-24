@@ -1,0 +1,112 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="doctorInstructionInput">
+   <div class="input">
+       <!--feedback messae -->
+       <div id="successFeedback" th:if="${feedbackMessage2 != null}">
+           <span class="column-left2"></span>
+           <span class="column-right2">
+               <div id="message-holder">
+                       <div class="messageblock hidden" th:text="${feedbackMessage2}">feedback message</div>
+               </div>
+               <script id="template-alert-message" type="text/x-handlebars-template">
+                   <div id="alert-message" class="alert alert-success fade in">
+                       <a class="close" data-dismiss="alert">&times;</a>
+                       {{message}}
+                   </div>
+               </script>
+           </span>
+           <br/>
+       </div>
+       <span th:if="${errorMessage != null}">
+           <span class="column-left2"></span>
+           <span class="column-right">
+                <p><span style="color:red;" th:text="${errorMessage}">Error Message</span></p>
+           </span><br/>
+       </span>
+    <form name='createPatientDetail' th:action="@{/doctor/createDoctorInstruction}" th:object="${doctorCommand2}" method='POST' onsubmit="return validate();">
+        <span th:if="${#fields.hasErrors('*')}">
+              <span style="color:#FF0000;" th:each="err : ${#fields.errors('*')}" >
+                  <span class="column-left2"></span>
+                  <span class="column-right">
+                      <span th:text="${err}"></span>
+                  </span>
+                  <br/>
+              </span>
+            <br/>
+        </span>
+
+        <span class="column-left2"></span>
+        <span class="column-right">
+             <p><span style="color:#FF9900;" th:text="#{label.doctor.instruction.caption}">Doctor Instruction</span></p>
+		</span><br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.doctor.medicine.packages}">Number of packages</span>
+        <span class="column-right">
+              <input path="medicinePackages" type='text' th:field='*{medicinePackages}' class="normal"/><span class="star">*</span>
+		</span>  <br/> <br/>
+
+        <span class="column-left2" th:text="#{label.form.doctor.medicine.days}">Doctor days used</span>
+        <span class="column-right">
+              <input path="medicineDays" type='text' th:field='*{medicineDays}' value='' class="normal"/><span class="star">*</span>
+		 </span>  <br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.doctor.water.cups}">Doctor cups of water</span>
+        <span class="column-right">
+              <input path="waterCups" type='text' th:field='*{waterCups}' value='' class="normal"/><span class="star">*</span>
+		 </span>  <br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.doctor.water.remain}">Doctor remain cups of water</span>
+        <span class="column-right">
+              <input path="waterRemain" type='text' th:field='*{waterRemain}' value='' class="normal"/><span class="star">*</span>
+		 </span>  <br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.doctor.drink.time}">Doctor drink time</span>
+        <span class="column-right">
+              <input path="drinkTime" type='text' th:field='*{drinkTime}' value='' class="normal"/><span class="star">*</span>
+		 </span>  <br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.doctor.second.water.cups}">Doctor Second Water Cups</span>
+        <span class="column-right">
+              <input path="secondWaterCups" type='text' th:field='*{secondWaterCups}' value='' class="normal"/><span class="star">*</span>
+		 </span>  <br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.doctor.second.water.remain}">Doctor Second Water Remain</span>
+        <span class="column-right">
+              <input path="secondWaterRemain" type='text' th:field='*{secondWaterRemain}' value='' class="normal"/><span class="star">*</span>
+		 </span>  <br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.doctor.signature}">Doctor Signature</span>
+        <span class="column-right">
+              <input path="signature" type='text' th:field='*{signature}' value='' class="normal"/><span class="star">*</span>
+		 </span>  <br/><br/>
+
+        <span class="column-right">
+              <input hidden path="doctorId" type='text' th:field='*{drID}' class="normal"/>
+		</span>
+
+        <br/><br/><br/>
+
+        <span class="column-left2"></span>
+        <span class="column-right">
+                    <input class="btn btn-primary" style="width: 80px;float: left;" name="submit" type="submit" th:value="#{label.form.submit}" />
+            </span>
+
+        <br/><br/><br/>
+        <span class="column-left2"></span>
+        <span class="column-right" style="color: #000000;">
+                <span th:text="#{label.notes1}">注释</span>
+                <span class="star">*</span>
+                <span th:text="#{label.notes2}">是必需输入的</span>
+         </span>
+
+        <br/><br/><br/>
+    </form>
+   </div>
+</div>
+</body>
+</html>

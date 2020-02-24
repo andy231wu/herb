@@ -1,0 +1,76 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{label.submenu.pickup.subscription}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{label.submenu.patient.income.report}">Chart Page</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-left">
+                    <div th:replace="fragments/shopMenu :: shopMenu"/>
+                </div>
+
+                <div class="pd-right">
+                    <div class="title">
+                        <span class="left" th:text="#{label.submenu.patient.income.report}">Chart Page</span>
+                        <span class="right">
+                            <a th:href="@{javascript:void(0);}" th:text="#{label.menu.owner}">">Shop Home </a>
+                            <span style="color:#000000;" th:utext = "*{#strings.escapeXml(' > > ')}"/>
+	         	             <a th:href="@{javascript:void(0);}" th:text="#{label.submenu.patient.income.report}">">Chart Page</a>
+
+	         	         </span>
+                    </div>
+                    <div class="tabbable">
+                        <ul class="tabs">
+                            <li><a href="#tab1"><span th:text="#{label.submenu.display.weekly.report}"/></a></li>
+                            <li><a href="#tab2"><span th:text="#{label.submenu.display.monthly.report}"/></a></li>
+                            <li><a href="#tab3"><span th:text="#{label.submenu.display.all.yearly.report}"/></a></li>
+                        </ul>
+                        <div class="tabcontent">
+                            <div id="tab1" class="tab">
+                                <p>
+                                <H2>
+                                    <span th:text="#{label.submenu.display.weekly.report}"/>网页
+                                </H2>
+                                </p>
+                            </div>
+                            <div id="tab2" class="tab">
+                                <p>
+                                <H2>
+                                    <span th:text="#{label.submenu.display.monthly.report}"/>网页
+                                </H2>
+                                </p>
+                            </div>
+
+                            <div id="tab3" class="tab">
+                                <p>
+                                <H2>
+                                    <span th:text="#{label.submenu.display.all.yearly.report}"/>网页
+                                </H2>
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+

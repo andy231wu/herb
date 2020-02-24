@@ -1,0 +1,88 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{label.shop.home.title}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{shop.home.overview}">Shop Home Page</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-left">
+                    <div th:replace="fragments/shopMenu :: shopMenu"/>
+                </div>
+
+                <div class="pd-right">
+                    <div class="title">
+                        <span class="left" th:text="#{shop.home.overview}">Shop Home Page</span>
+                        <span class="right">
+                            <a th:href="@{javascript:void(0);}" th:text="#{label.menu.owner}">">Shop Home </a>
+                             <span style="color:#000000;" th:utext = "*{#strings.escapeXml(' > > ')}"/>
+	         	             <a th:href="@{javascript:void(0);}" th:text="#{shop.home.overview}">">Shop Home Review</a>
+
+	         	         </span>
+                    </div>
+                    <div class="section">
+                        <span style="color:#FF9900;" th:text="#{shop.functions.message}"></span><br />
+
+                        <ul id="menuList">
+                            <li>
+                                <a th:href="@{/shop/createShopDetail}" th:text="#{label.submenu.create.shop.detail}">Create Shop Detail</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/createShopDetail}" th:text="#{label.submenu.create.shop.address}">Create Shop Address</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/createShopDetail}" th:text="#{label.submenu.show.shop.info}">Show Shop Info</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/createShopDetail}" th:text="#{label.submenu.edit.shop.detail}">Edit Shop Detail</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/shop/createDoctorUser}" th:text="#{label.submenu.create.doctor.user}">Create Doctor User</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/createDoctorUser}" th:text="#{label.submenu.edit.doctor.user}">Edit Doctor User</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/createDoctorUser}" th:text="#{label.submenu.display.all.doctors}">Display All Doctor Users</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/shop/createHerb}" th:text="#{label.submenu.create.herb.group}">Create a Herb Group</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/createHerb}" th:text="#{label.submenu.create.herb}">Create a Herb</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/createHerb}" th:text="#{label.submenu.edit.herb}">Edit a Herb</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/createHerb}" th:text="#{label.submenu.display.herbs.by.group}">Display All Herbs by Group</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/shop/pickupPrescription}" th:text="#{label.submenu.pickup.subscription}">Pick up an unprocessed prescription</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/pickupPrescription}" th:text="#{label.submenu.picup.unresolved.presscription}">Pic up an unresolved prescription</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/pickupPrescription}" th:text="#{label.submenu.display.all.rejected.prescritions}">Display all rejected prescriptions</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/shop/showPatientIncomeCharts}" th:text="#{label.submenu.display.weekly.report}">Display Weekly Chart</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/showPatientIncomeCharts}" th:text="#{label.submenu.display.monthly.report}">Display Monthly Chart</a>
+                                <span>&nbsp;&nbsp;</span>
+                                <a th:href="@{/shop/showPatientIncomeCharts}" th:text="#{label.submenu.display.all.yearly.report}">Display Yearly Chart</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</html>

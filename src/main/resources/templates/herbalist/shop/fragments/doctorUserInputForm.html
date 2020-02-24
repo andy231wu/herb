@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="doctorUserInput">
+   <div class="input">
+
+       <span th:if="${message != null}">
+           <span class="column-left2"></span>
+           <span class="column-right">
+                <p><span style="color:#ff0000;" th:text="${message}">Error Message</span></p>
+           </span><br/>
+       </span>
+       <form name='doctorUser' th:action="@{/shop/createDoctorUser}" th:object="${doctorUserCommand}" method='POST' onsubmit="return validate();">
+           <span class="column-left2"></span>
+           <span class="column-right">
+                                <p><span style="color:#FF9900;" th:text="#{label.new.user.caption}">New User Detail</span></p>
+							    </span><br/><br/>
+
+           <span class="column-left2" th:text="#{label.form.login.username}">Doctor Username</span>
+           <span class="column-right">
+                                   <input path="username" type='text' th:field='*{username}' class="normal"/><span class="star">*</span>
+							        <span class="fieldError"><errors path="username" class="error"/></span>
+							    </span>  <br/> <br/>
+
+           <span class="column-left2" th:text="#{label.form.login.passwood}">Password</span>
+           <span class="column-right">
+							        <input path="password" type='text' th:field='*{password}' value='' class="normal"/><span class="star">*</span>
+							        <span class="star">
+							            <span class="fieldError"><errors path="password" class="error"/></span>
+							        </span>
+							    </span>  <br/><br/>
+
+           <span class="column-left2" th:text="#{label.user.role}">Role</span>
+           <span class="column-right">
+                                   <input path="role" type='text' th:field='*{role}' th:disabled="true" class="normal"/><span class="star">*</span>
+							        <span class="fieldError"><errors path="role" class="error"/></span>
+							    </span>  <br/> <br/>
+
+           <br/><br/><br/><br/> <br/>
+
+
+           <span class="column-left"></span>
+           <span class="column-right">
+                                 <input class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit}" />
+
+						    </span>
+
+           <br/><br/><br/>
+           <span class="column-left"></span>
+
+           <span class="column-right" style="color: #000000;">
+							          <span>注释<span class="star">*</span>是必需输入的</span>
+							    </span>
+
+           <br/><br/><br/>
+       </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{label.menu.display.all.users}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{label.menu.display.all.users}">Display All Users</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-left">
+                    <div th:replace="fragments/adminMenu :: adminMenu"/>
+                </div>
+
+                <div class="pd-right">
+                    <div class="title">
+                        <span class="left" th:text="#{label.menu.display.all.users}"></span>
+                        <span class="right">
+                            <a th:href="@{javascript:void(0);}" th:text="#{label.menu.admin}">">Admin Home </a>
+                            <span style="color:#000000;" th:utext = "*{#strings.escapeXml(' > > ')}"/>
+	         	             <a th:href="@{javascript:void(0);}" th:text="#{label.menu.display.all.users}">"></a>
+
+	         	         </span>
+                    </div>
+
+                    <div class="section">
+                        <span style="color:#FF9900;" th:text="#{label.display.all.users}"></span><br />
+                        <table class="table table-striped">
+                            <tr>
+                                <th th:text="#{label.form.login.username}"></th>
+                                <td th:text="#{label.user.role}"></td>
+                                <th th:text="#{label.form.login.username}"></th>
+                                <td th:text="#{label.user.role}"></td>
+                            </tr>
+
+                                <tr th:each="user : *{appUsers}" th:object="${appUsers}">
+                                    <td th:text="${user.username}">andywu</td>
+                                    <td th:text="${user.role}">ROLE_ADMIN</td>
+                                    <td th:text="${user.availableDays}">available days</td>
+                                    <td th:text="${user.expiredDate}">Expired Date</td>
+                                </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</html>

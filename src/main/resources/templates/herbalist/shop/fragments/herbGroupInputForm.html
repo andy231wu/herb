@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="herbGroupInput">
+   <div class="input">
+       <form name='createHerbGroup' th:action="@{/shop/createHerbGroup}" th:object="${herbGroupCommand}" method='POST' onsubmit="return validate();">
+           <span class="column-left2"></span>
+           <span class="column-right">
+                 <p><span style="color:#FF9900;" th:text="#{label.new.herb.group.caption}">New Herb Group Detail</span></p>
+			</span><br/><br/>
+
+           <span class="column-left2" th:text="#{label.form.herb.group.name}">Herb Group Name</span>
+           <span class="column-right">
+               <input path="name" type='text' th:field='*{name}' class="normal"/><span class="star">*</span>
+               <span class="fieldError"><errors path="name" class="error"/></span>
+           </span>  <br/> <br/>
+
+           <span class="column-left2" th:text="#{label.form.shop.shop}">Shop Name</span>
+           <span class="column-right">
+                <select  th:field="*{clinic.chineseName}"  id="dropOperator">
+                    <option th:each="clinic : ${clinics}" th:value="${clinic.chineseName}" th:text="${clinic.chineseName}"></option>
+                </select>
+            </span>  <br/> <br/>
+
+           <br/><br/><br/><br/> <br/>
+
+
+           <span class="column-left"></span>
+           <span class="column-right">
+                 <input class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit}" />
+		    </span>
+
+           <br/><br/><br/>
+           <span class="column-left"></span>
+
+           <span class="column-right" style="color: #000000;">
+							          <span>注释<span class="star">*</span>是必需输入的</span>
+							    </span>
+
+           <br/><br/><br/>
+       </form>
+    </div>
+</div>
+</body>
+</html>

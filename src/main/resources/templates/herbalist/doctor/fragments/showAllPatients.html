@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="showAllPatientsInfo">
+    <div class="section">
+        <span style="color:#FF9900;" th:text="#{label.display.all.patients.info}"></span><br />
+        <table class="table table-striped">
+            <tr>
+                <th th:text="#{label.form.patient.last.name}"></th>
+                <th th:text="#{label.form.patient.first.name}"></th>
+                <th th:text="#{label.form.patient.sex}"></th>
+                <th th:text="#{label.form.patient.phone}"></th>
+                <th th:text="#{label.form.patient.dob}"></th>
+                <th th:text="#{label.patient.doctor}"></th>
+            </tr>
+
+
+            <tr th:each="patient : ${page.content}">
+                <td th:text="${patient.lastName}">Patient Last Name</td>
+                <td th:text="${patient.firstName}">Patient First Name</td>
+                <td th:text="${patient.sex}">Patient Sex</td>
+                <td th:text="${patient.phone}">Patient Phone</td>
+                <td th:text="${patient.dob}">Patient Birthday</td>
+                <td th:text="${patient.updateUser}">Patient's Doctor</td>
+            </tr>
+
+        </table>
+
+
+        <div class="pagination-div">
+            <span th:if="${page.hasPrevious()}">
+                 <a th:href="@{/doctor/createPatientDetail(page=0,size=${page.size})}">&lt;&lt;&nbsp;</a>
+                <a th:href="@{/doctor/createPatientDetail(page=${page.number-1},size=${page.size})}">&lt;&nbsp;</a>
+            </span>
+            <th:block th:each="i: ${#numbers.sequence(0, page.totalPages - 1)}">
+                <span th:if="${page.number == i}" class="selected">[[${i}+1]]</span>
+                <span th:unless="${page.number == i}">
+                     <a th:href="@{/doctor/createPatientDetail(page=${i},size=${page.size})}">[[${i}+1]]</a>
+                </span>
+            </th:block>
+            <span th:if="${page.hasNext()}">
+                <a th:href="@{/doctor/createPatientDetail(page=${page.number+1},size=${page.size})}">&nbsp;&gt;</a>
+                <a th:href="@{/doctor/createPatientDetail(page=${page.totalPages-1},size=${page.size})}">&nbsp;&gt;&gt;</a>
+            </span>
+        </div>
+    </div>
+
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</html>

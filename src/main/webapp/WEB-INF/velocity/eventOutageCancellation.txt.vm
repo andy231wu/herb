@@ -1,0 +1,10 @@
+SUMMARY OF ACTIVITY:
+There has been a scheduled #if(!$allSystems)$sourceSystem#end event processing outage in GPR #if($allSystems)for all systems#end
+
+SIGNIFICANCE:
+GPR will process any incoming events #if (!$allSystems)from $sourceSystem#end as per normal
+
+USER REQUIRED ACTIONS:
+None
+
+If you encounter any problems after the outage, please contact the GPR Product Manager on (02) 9236 7706 or email at gpr.info@property.nsw.gov.au

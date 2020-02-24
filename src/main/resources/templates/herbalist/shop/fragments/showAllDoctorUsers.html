@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="showAllDoctors">
+    <div class="section">
+        <span style="color:#FF9900;" th:text="#{label.display.all.users}"></span><br />
+        <table class="table table-striped">
+            <tr>
+                <th th:text="#{label.form.login.username}"></th>
+                <td th:text="#{label.user.role}"></td>
+            </tr>
+
+            <tr th:each="user : *{appUsers}" th:object="${appUsers}">
+                <td th:text="${user.username}">doctor</td>
+                <td th:text="${user.role}">ROLE_DOCTOR</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</html>

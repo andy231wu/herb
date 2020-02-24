@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="showHerbDetail">
+    <div class="section">
+        <span style="color:#FF9900;" th:text="#{label.new.herb.caption}"></span><br />
+
+        <table>
+            <th:block>
+                <th th:text="#{label.form.herb.group.name}"></th>
+                <th th:text="#{label.form.herb.chinese.name}"></th>
+                <th th:text="#{label.form.herb.english.name}"></th>
+                <th th:text="#{label.form.herb.unit.price}"></th>
+                <th>&nbsp;&nbsp;</th>
+                <th th:text="#{label.form.herb.expired.date}"></th>
+            </th:block>
+
+            <tr th:each="herb, rowStat : *{herbs}" th:object="${herbs}" th:class="${rowStat.odd}? 'odd' : 'even'">
+                <td th:text="${herb.herbClass.name}"></td>
+                <td th:text="${herb.chineseName}"></td>
+                <td th:text="${herb.englishName}"></td>
+                <td class="right" th:text="${herb.unitPrice}"></td>
+                <td>&nbsp;&nbsp;</td>
+                <td th:text="${herb.expireDate}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

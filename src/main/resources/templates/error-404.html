@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{label.404.page.title}">Access Denied Page</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <div class="ban-wrap">
+        <div class="bg-wrap"><!-- load image from css file --></div>
+    </div>
+    <h2><span th:text="#{label.404.page.title}">404 - Entity not found page</span></h2>
+    <dl class="about">
+        <dt></dt>
+        <dd>
+            <div>
+                <span style="color:red;" th:text="#{label.404.page.title}">404 - Entity not found page</span>
+                <br />
+
+                <!--<span th:text="${exception}">Exception Entity with Message</span>
+                <br />-->
+
+                <span th:text="${exception.message}" >Exception Message</span>
+                <br />
+                <a style="color:blue;" th:href="@{/}" th:text="#{back.to.home.page}">Back to Home Page</a>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="symptomInput">
+   <div class="input">
+       <!--feedback messae -->
+       <div id="successFeedback" th:if="${feedbackMessage != null}">
+           <span class="column-left"></span>
+           <span class="column-right">
+               <div id="message-holder">
+                       <div class="messageblock hidden" th:text="${feedbackMessage}">feedback message</div>
+               </div>
+               <script id="template-alert-message" type="text/x-handlebars-template">
+                   <div id="alert-message" class="alert alert-success fade in">
+                       <a class="close" data-dismiss="alert">&times;</a>
+                       {{message}}
+                   </div>
+               </script>
+           </span>
+
+       </div>
+       <span th:if="${errorMessage != null}">
+           <span class="column-left"></span>
+           <span class="column-right">
+                <p><span style="color:red;" th:text="${errorMessage}">Error Message</span></p>
+           </span><br/>
+       </span>
+
+       <form name='searchPatientDetail' th:action="@{/doctor/searchCurrentPatientWithPrescription}" th:object="${searchCommand}" method="post" >
+
+           <span class="column-left">
+                <span th:if="${currentPatient}">
+                   <span th:text="${currentPatient.lastName}">Patient Last Name</span>
+                   <span th:text="${currentPatient.firstName}">Patient first Name</span>
+               </span>
+           </span>
+           <span class="column-right">
+               <span th:text="#{label.form.patient.phone}">Phone</span>/<span th:text="#{label.form.patient.first.name}">First Name</span>
+               <input path="patientSearchString" type='text' style="width: 200px;" th:field='*{patientSearchString}' />
+               <input class="btn btn-success" style="width: 80px;" name="submit" type="submit" th:value="#{label.search}" />
+           </span>
+       </form>
+       <br/><br/>
+       <div class="line"></div>
+       <br/>
+
+    <form name='editPrescriptionSymptom' th:action="@{/doctor/editSymptom}" th:object="${symptomCommand}" method='POST' onsubmit="return validate();">
+        <span class="column-left"></span>
+        <span class="column-right">
+             <p><span style="color:#FF9900;" th:text="#{label.patient.symptom.caption}">Patient Symptom</span></p>
+		</span><br/><br/>
+
+        <span class="column-left"></span>
+        <span class="column-right">
+              <textarea path="symptom" type='textarea' th:field='*{symptom}' rows="7" cols="60"/>
+		</span>  <br/> <br/>
+        <span hidden><input type='text' th:field='*{patientID}' class="normal"/></span>
+        <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+        <span class="column-left"></span>
+        <span class="column-right">
+              <input class="btn btn-primary" style="width: 80px;" name="submit" type="submit" th:value="#{label.form.submit}" />
+		</span>
+        <br/> <br/>
+    </form>
+
+</div>
+</div>
+</body>
+</html>

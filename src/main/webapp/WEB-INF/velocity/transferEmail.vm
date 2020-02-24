@@ -1,0 +1,9 @@
+The following property has been transferred to your Agency: $agencyName
+by $currentUsername from $currentUserAgencyName
+
+Property : $propertyNoName, $propertyAddress
+
+Attached Lot(s) :
+#foreach( $lotReference in $lotReferences )
+	$lotReference
+#end

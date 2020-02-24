@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{label.admin.home.title}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{admin.home.overview}">Admin Home Page</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-left">
+                    <div th:replace="fragments/adminMenu :: adminMenu"/>
+                </div>
+
+                <div class="pd-right">
+                    <div class="title">
+                        <span class="left" th:text="#{admin.home.overview}">Admin Home Page</span>
+                        <span class="right">
+                            <a th:href="@{javascript:void(0);}" th:text="#{label.menu.admin}">">Admin Home </a>
+                             <span style="color:#000000;" th:utext = "*{#strings.escapeXml(' > > ')}"/>
+	         	             <a th:href="@{javascript:void(0);}" th:text="#{admin.home.overview}">">Admin Home Review</a>
+
+	         	         </span>
+                    </div>
+                    <div class="section">
+                        <span style="color:#FF9900;" th:text="#{admin.functions.message}"></span><br />
+
+                        <ul id="menuList">
+                            <li><a th:href="@{/admin/showGlobalParameter}" th:text="#{label.menu.show.global.parameter}">View System Parameter</a></li>
+                            <li><a th:href="@{/admin/editGlobalParameter}" th:text="#{label.menu.edit.global.parameter}">Edit System Parameter</a></li>
+                            <li><a th:href="@{/admin/createShopOwner}" th:text="#{label.menu.create.shop.owner}">Create Shop Owner</a></li>
+                            <li><a th:href="@{/admin/displayAllUsers}" th:text="#{label.menu.display.all.users}">Display All Users</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</html>

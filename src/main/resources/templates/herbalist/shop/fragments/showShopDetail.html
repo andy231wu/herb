@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="showShopDetail">
+    <div class="section">
+        <span style="color:#FF9900;" th:text="#{label.show.shop.info.title}"></span><br />
+        <table class="table table-striped" th:each="clinic : *{clinics}" th:object="${clinics}">
+            <tr>
+                <td th:text="#{label.form.shop.chinese.name}"></td>
+                <td th:text="${clinic.chineseName}"></td>
+                <td th:text="#{label.form.shop.english.name}"></td>
+                <td th:text="${clinic.englishName}"></td>
+            </tr>
+            <tr>
+                <td th:text="#{label.form.shop.phone}"></td>
+                <td th:text="${clinic.phone}"></td>
+                <td th:text="#{label.form.shop.description}"></td>
+                <td th:text="${clinic.description}"></td>
+            </tr>
+
+            <tr th:each="address : ${clinic.addresses}">
+                <td th:text="#{label.form.shop.address}"></td>
+                <td colspan="3" th:text="${address.address1} + ' ' + ${address.address2} + ' ' +
+                                             ${address.suburb} + ' ' + ${address.postCode} + ' ' +
+                                             ${address.state} "></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>

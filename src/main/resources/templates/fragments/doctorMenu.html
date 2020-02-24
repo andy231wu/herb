@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:fragment="doctorMenu">
+    <ul id="vMenu">
+        <li class="vMenu_00"><span th:text="#{doctor.home.overview}">Doctor Functions Overview</span> </li>
+        <li class="vMenu_01">
+            <a th:href="@{/doctor/createDoctorDetail}" th:text="#{label.submenu.create.doctor.detail}">Create Doctor Detail</a>
+        </li>
+        <li class="vMenu_01">
+            <a th:href="@{/doctor/createPatientDetail}" th:text="#{label.submenu.create.patient.detail}">Create Patient Detail</a>
+        </li>
+        <li class="vMenu_01">
+            <a th:href="@{/doctor/createPrescription}" th:text="#{label.submenu.create.prescription}">Create Subscription</a>
+        </li>
+        <li class="vMenu_01">
+            <a th:href="@{/doctor/editPrintPrescription}" th:text="#{label.submenu.amend.print.prescription}">Edit or print Subscription</a>
+        </li>
+        <li class="vMenu_01">
+            <a th:href="@{/doctor/searchHistoryRecord}" th:text="#{label.submenu.history.record.search}">Search History Record</a>
+        </li>
+        <li class="vMenu_01">
+            <a th:href="@{/doctor/showPatientFeeCharts}" th:text="#{label.submenu.patient.service.fee.report}">Display Patient and Fee chart</a>
+        </li>
+        <li class="vMenu_01">
+            <a th:href="@{/doctor/purgeOldPrescriptions}" th:text="#{label.submenu.purge.old.prescriptions}">Purge Old Prescription</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

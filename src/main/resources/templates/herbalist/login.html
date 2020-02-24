@@ -1,0 +1,98 @@
+<html>
+
+<head>
+    <title th:text="#{label.login.home.title}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+<script th:inline="javascript">
+
+	function validate() {
+        if (document.f.username.value == "" && document.f.password.value == "") {
+            alert(/*[[#{message.username} + #{message.password}]]*/);
+            document.f.username.focus();
+            return false;
+        }
+        if (document.f.username.value == "") {
+            alert(/*[[#{message.username}]]*/);
+            document.f.username.focus();
+            return false;
+        }
+        if (document.f.password.value == "") {
+            alert(/*[[#{message.password}]]*/);
+            document.f.password.focus();
+            return false;
+        }
+    }
+
+</script>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{label.form.login.title}">System Login</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-right" style="padding-left: 115px;">
+                    <div class="title">
+                        <span class="left" th:text="#{label.form.login.title}">System Login</span>
+                    </div>
+
+                    <div class="input">
+                        <form name='f' action="login" method='POST' onsubmit="return validate();">
+                            <span class="column-left"></span>
+                            <span class="column-right">
+                                <p><span th:text="#{login.in.caption}">After Login, then go to other page</span></p>
+							    </span><br/><br/>
+
+                            <span class="column-left" th:text="#{label.form.login.username}">Username</span>
+                            <span class="column-right">
+							        <input path="id" type='text' name='username' value='' class="normal"/><span class="star">*</span>
+							        <span class="star">
+							            <span class="fieldError"><errors path="id" class="error"/></span>
+							        </span>
+							    </span>  <br/><br/>
+
+                            <span class="column-left" th:text="#{label.form.login.passwood}">Password</span>
+                            <span class="column-right">
+                                   <input path="password" type='text' name='password' value='' class="normal"/><span class="star">*</span>
+							        <span class="fieldError"><errors path="password" class="error"/></span>
+							    </span>  <br/> <br/>
+
+
+                            <br/><br/><br/><br/> <br/>
+
+
+                            <span class="column-left"></span>
+                            <span class="column-right">
+                                 <input class="btn btn-primary" style="width: 80px;float: left;" name="submit" type="submit" th:value="#{label.form.submit}" />
+
+						    </span>
+
+                            <br/><br/><br/>
+                            <span class="column-left"></span>
+
+                            <span class="column-right" style="color: #000000;">
+							          <span>注释<span class="star">*</span>是必需输入的</span>
+							    </span>
+
+                            <br/><br/><br/>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+
+</html>

@@ -1,0 +1,85 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="shopAddressInput">
+
+   <div class="input">
+
+    <form name='createShopAddress' th:action="@{/shop/createShopAddress}" th:object="${addressCommand}" method='POST' onsubmit="return validate();">
+        <span class="column-left2"></span>
+        <span class="column-right">
+                                <p><span style="color:#FF9900;" th:text="#{label.shop.address.caption}">Shop Address Detail</span></p>
+							    </span><br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.address1}">Shop Address 1</span>
+        <span class="column-right">
+                                   <input path="address1" type='text' th:field='*{address1}' class="normal"/><span class="star">*</span>
+							        <span class="fieldError"><errors path="address1" class="error"/></span>
+							    </span>  <br/> <br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.address2}">Shop Address 2</span>
+        <span class="column-right">
+							        <input path="address2" style="width: 350px;" type='text' th:field='*{address2}' value='' class="normal"/><span class="star">*</span>
+							        <span class="star">
+							            <span class="fieldError"><errors path="address2" class="error"/></span>
+							        </span>
+							    </span>  <br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.suburb}">Suburb</span>
+        <span class="column-right">
+                                   <input path="subburb" type='text' th:field='*{suburb}' class="normal"/><span class="star">*</span>
+							        <span class="fieldError"><errors path="suburb" class="error"/></span>
+							    </span>  <br/> <br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.postcode}">Postcode</span>
+        <span class="column-right">
+                                   <input path="postcode" style="width: 350px;" type='text' th:field='*{postCode}' class="normal"/><span class="star">*</span>
+							        <span class="fieldError"><errors path="postcode" class="error"/></span>
+							    </span>  <br/> <br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.state}">State</span>
+        <span class="column-right">
+            <select  th:field="*{state}"  id="stateDropdown">
+                <option value="NSW" th:text="NSW" ></option>
+                <option value="VIC" th:text="VIC" ></option>
+                <option value="QLD" th:text="QLD" ></option>
+                <option value="ACT" th:text="ACT" ></option>
+                <option value="SA" th:text="SA" ></option>
+                <option value="WA" th:text="WA" ></option>
+
+            </select>
+        </span>  <br/> <br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.shop}">Shop Name</span>
+        <span class="column-right">
+            <select  th:field="*{clinic.chineseName}"  id="dropOperator">
+                <option th:each="clinic : ${clinics}" th:value="${clinic.chineseName}" th:text="${clinic.chineseName}"></option>
+            </select>
+
+		 </span>  <br/> <br/>
+
+        <br/><br/><br/><br/> <br/>
+
+
+        <span class="column-left"></span>
+        <span class="column-right">
+            <input class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit}" />
+		 </span>
+
+        <br/><br/><br/>
+        <span class="column-left"></span>
+
+        <span class="column-right" style="color: #000000;">
+							          <span>注释<span class="star">*</span>是必需输入的</span>
+							    </span>
+
+        <br/><br/><br/>
+    </form>
+
+</div>
+</div>
+</body>
+</html>

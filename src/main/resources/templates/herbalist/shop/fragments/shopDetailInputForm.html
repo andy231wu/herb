@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <div th:fragment="shopDetailInput">
+      <div class="input">
+       <form name='createShopDetail' th:action="@{/shop/createShopDetail}" th:object="${shopCommand}" method='POST' onsubmit="return validate();">
+        <span class="column-left2"></span>
+        <span class="column-right">
+              <p><span style="color:#FF9900;" th:text="#{label.shop.detail.caption}">Shop Detail</span></p>
+        </span><br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.chinese.name}">Shop Chinese Name</span>
+        <span class="column-right">
+            <input path="chineseName" type='text' th:field='*{chineseName}' class="normal"/><span class="star">*</span>
+            <span class="fieldError"><errors path="chineseName" class="error"/></span>
+        </span>  <br/> <br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.english.name}">Shop English Name</span>
+        <span class="column-right">
+            <input path="englishName" style="width: 350px;" type='text' th:field='*{englishName}' value='' class="normal"/><span class="star">*</span>
+            <span class="star">
+                <span class="fieldError"><errors path="englishName" class="error"/></span>
+            </span>
+        </span>  <br/><br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.phone}">Phone</span>
+        <span class="column-right">
+           <input path="phone" type='text' th:field='*{phone}' class="normal"/><span class="star">*</span>
+            <span class="fieldError"><errors path="phone" class="error"/></span>
+        </span>  <br/> <br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.email}">Email</span>
+        <span class="column-right">
+            <input path="email" type='text' th:field='*{email}' class="normal"/><span class="star">*</span>
+            <span class="fieldError"><errors path="email" class="error"/></span>
+        </span>  <br/> <br/>
+
+        <span class="column-left2" th:text="#{label.form.shop.description}">Description</span>
+        <span class="column-right">
+            <input path="description" style="width: 350px;" type='text' th:field='*{description}' class="normal"/><span class="star">*</span>
+            <span class="fieldError"><errors path="description" class="error"/></span>
+        </span>  <br/> <br/>
+
+        <span class="column-left2" th:text="#{label.form.doctor.validate.herb.name}">Validate Herb Name when creating prescription</span>
+        <span class="column-right">
+            <input type="checkbox" style="width: 30px;" th:field='*{validateHerbName}'/>
+		</span>  <br/> <br/>
+
+        <br/><br/><br/><br/> <br/>
+
+
+        <span class="column-left"></span>
+        <span class="column-right"><input class="btn btn-primary" name="submit" type="submit" th:value="#{label.form.submit}" /></span>
+
+        <br/><br/><br/>
+
+        <span class="column-left"></span>
+        <span class="column-right" style="color: #000000;"><span>注释<span class="star">*</span>是必需输入的</span></span>
+
+        <br/><br/><br/>
+    </form>
+   </div>
+   </div>
+</body>
+</html>

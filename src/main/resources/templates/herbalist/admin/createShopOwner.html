@@ -1,0 +1,121 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{label.menu.edit.global.parameter}">Title</title>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div id="page-main" class="page-main">
+    <h2><span th:text="#{label.menu.create.shop.owner}">Create Shop Owner User Page</span></h2>
+    <dl class="contents">
+        <dt></dt>
+        <dd>
+            <div class="wrapper clear">
+                <div class="pd-left">
+                    <div th:replace="fragments/adminMenu :: adminMenu"/>
+                </div>
+
+                <div class="pd-right">
+                    <div class="title">
+                        <span class="left" th:text="#{label.menu.create.shop.owner}">Create Show Owner User page</span>
+                        <span class="right">
+                            <a th:href="@{javascript:void(0);}" th:text="#{label.menu.admin}">">Admin Home </a>
+                            <span style="color:#000000;" th:utext = "*{#strings.escapeXml(' > > ')}"/>
+	         	             <a th:href="@{javascript:void(0);}" th:text="#{label.menu.create.shop.owner}">">Create Show Owner</a>
+
+	         	         </span>
+                    </div>
+
+                    <div class="input">
+                        <form name='globalParameter' th:action="@{/admin/createShopOwner}" th:object="${ownerUserCommand}" method='POST' onsubmit="return validate();">
+                            <span class="column-left2"></span>
+                            <span class="column-right">
+                                <p><span style="color:#FF9900;" th:text="#{label.new.user.caption}">New User Detail</span></p>
+							    </span><br/><br/>
+
+                            <span class="column-left2" th:text="#{label.form.login.username}">Owner Username</span>
+                            <span class="column-right">
+                                   <input path="username" type='text' th:field='*{username}' class="normal"/><span class="star">*</span>
+							        <span class="fieldError"><errors path="username" class="error"/></span>
+							    </span>  <br/> <br/>
+
+                            <span class="column-left2" th:text="#{label.form.login.passwood}">Password</span>
+                            <span class="column-right">
+							        <input path="password" type='text' th:field='*{password}' value='' class="normal"/><span class="star">*</span>
+							        <span class="star">
+							            <span class="fieldError"><errors path="password" class="error"/></span>
+							        </span>
+							    </span>  <br/><br/>
+
+                            <span class="column-left2" th:text="#{label.user.role}">Role</span>
+                            <span class="column-right">
+                                   <input path="role" type='text' th:field='*{role}' th:disabled="true" class="normal"/><span class="star">*</span>
+							        <span class="fieldError"><errors path="role" class="error"/></span>
+							 </span>  <br/> <br/>
+
+
+                            <span class="column-left2" th:text="#{label.available.days}">Available Days</span>
+                            <span class="column-right">
+							        <input path="days" type='text' th:field='*{availableDays}' value='' class="normal"/><span class="star">*</span>
+							        <span class="star">
+							            <span class="fieldError"><errors path="days" class="error"/></span>
+							        </span>
+							 </span>  <br/><br/>
+
+                            <span class="column-left2" th:text="#{label.user.isAccountNonExpired}">Account Non Expired</span>
+                            <span class="column-right">
+                                  <input type="checkbox" style="width: 30px;" th:checked="checked" th:field='*{accountNonExpired}'/>
+                            </span>  <br/> <br/>
+
+                            <span class="column-left2" th:text="#{label.user.isAccountNonLocked}">Account Non Locked</span>
+                            <span class="column-right">
+                                <input type="checkbox" style="width: 30px;" th:field='*{accountNonLocked}'/>
+                            </span>  <br/> <br/>
+
+
+                            <span class="column-left2" th:text="#{label.user.isCredentialsNonExpired}">Creditial Expired</span>
+                            <span class="column-right">
+                                  <input type="checkbox" style="width: 30px;" th:checked="checked" th:field='*{credentialsNonExpired}'/>
+                            </span>  <br/> <br/>
+
+                            <span class="column-left2" th:text="#{label.user.isEnabled}">Enable</span>
+                            <span class="column-right">
+                                <input type="checkbox" style="width: 30px;" th:field='*{enabled}'/>
+                            </span>  <br/> <br/>
+
+
+                            <br/><br/><br/><br/> <br/>
+
+
+                            <span class="column-left"></span>
+                            <span class="column-right">
+                                 <input class="btn btn-primary" style="width: 80px;float: left;" name="submit" type="submit" th:value="#{label.form.submit}" />
+
+						    </span>
+
+                            <br/><br/><br/>
+                            <span class="column-left"></span>
+
+                            <span class="column-right" style="color: #000000;">
+							          <span>注释<span class="star">*</span>是必需输入的</span>
+							    </span>
+
+                            <br/><br/><br/>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </dd>
+    </dl>
+    <div class="wrap_bottom"></div>
+</div>
+</body>
+
+<div th:replace="fragments/footer :: footer"/>
+
